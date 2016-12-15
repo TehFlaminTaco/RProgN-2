@@ -12,9 +12,28 @@ public class RProgN {
 	public static void main(String[] args) {
 		Functions.setDefaults();
 		
+		String target=null;
+		for(String arg : args){
+			if(arg.substring(0, 1).equals("-")){
+				for(String s : arg.substring(2).split("")){
+					Flags.SetFlag(s);
+				}
+			}else{
+				target = arg;
+			}
+		}
+		
+		if(target==null){
+			System.err.println("Could not run no code!");
+		}
+		
 		interpreter = new Interpreter();
 		try{
-			interpreter.execute(new File("C:\\Users\\William\\Desktop\\code.rpn"));
+			if(Flags.FlagToggled("s")){
+				interpreter.execute(target);
+			}else{
+				interpreter.execute(new File(target));
+			}
 			
 			while(!interpreter.reg.isEmpty()){
 				System.out.println(interpreter.reg.pop().toString());

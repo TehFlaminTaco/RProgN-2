@@ -4,7 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 import java.util.Stack;
+
+import rprogn.Flags;
 import rprogn.compiler.Compiler;
 import rprogn.compiler.concept.Concept;
 import rprogn.variable.Var;
@@ -28,8 +32,7 @@ public class Interpreter {
 		execute(toExecute);
 	}
 	
-	public void execute(String string){
-		//System.out.print(string);
+	public void execute(String string){		
 		Concept[] concepts = Compiler.compile(string);
 		Parser.parse(concepts,this);
 	}
