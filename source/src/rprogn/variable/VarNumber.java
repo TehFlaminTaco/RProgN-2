@@ -16,6 +16,10 @@ public class VarNumber extends Var {
 	}
 	
 	public String toString(){
+		if((int)data == data){
+			return String.valueOf((int)data);
+		}
+		
 		return String.valueOf(data);
 	}
 }

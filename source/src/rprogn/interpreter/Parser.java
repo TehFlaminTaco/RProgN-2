@@ -18,9 +18,13 @@ public class Parser {
 				Callable func = scope.get(((ConceptFunction) concept).func);
 				
 				if(func!=null){
-					int I = func.Call(interpreter,scope);
-					if(I>-1){
-						i=I;
+					try{
+						int I = func.Call(interpreter,scope);
+						if(I>-1){
+							i=I;
+						}
+					}catch(Exception e){
+						e.printStackTrace();
 					}
 				}
 			}else if(concept instanceof ConceptString){

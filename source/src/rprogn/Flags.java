@@ -3,22 +3,19 @@ package rprogn;
 import java.util.HashMap;
 
 public class Flags {
-	public static HashMap<String,String> flags = new HashMap<String,String>();
+	public static HashMap<String,Boolean> flags = new HashMap<String,Boolean>();
 	
 	
 	public static void SetFlag(String flag){
-		SetFlag(flag,"true");
+		SetFlag(flag,true);
 	}
 	
-	public static void SetFlag(String flag, String value){
+	public static void SetFlag(String flag, boolean value){
 		flags.put(flag, value);
 	}
 	
 	public static boolean FlagToggled(String flag){
-		String str = flags.get(flag);
-		if(str!=null){
-			return true;
-		}
-		return false;
+		Boolean b = flags.get(flag);
+		return b==null ? false : b;
 	}
 }
