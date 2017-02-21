@@ -16,7 +16,7 @@ public class RProgN {
 		
 		String target=null;
 		for(String arg : args){
-			if(arg.substring(0, 1).equals("-")){
+			if(arg.length()>1 && arg.substring(0, 1).equals("-")){
 				for(String s : arg.substring(2).split("")){
 					Flags.SetFlag(s);
 				}
