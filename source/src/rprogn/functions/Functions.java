@@ -12,6 +12,8 @@ import rprogn.callables.arithmetic.CallablePower;
 import rprogn.callables.arithmetic.CallableSubtract;
 import rprogn.callables.flow.CallableEnd;
 import rprogn.callables.flow.CallableFunc;
+import rprogn.callables.misc.CallableAsoc;
+import rprogn.callables.misc.CallableCall;
 import rprogn.variable.VarNumber;
 import rprogn.variable.VarString;
 
@@ -36,6 +38,9 @@ public class Functions {
 		newDefault(new CallableFunc(), "function", "{");
 		newDefault(new CallableEnd(), "end", "}");
 		
+		// Misc
+		newDefault(new CallableCall(), "call","C");
+		newDefault(new CallableAsoc(), "asoc","=");
 	}
 	
 	

@@ -2,6 +2,7 @@ package rprogn.compiler;
 
 import java.util.Stack;
 
+import rprogn.Flags;
 import rprogn.compiler.concept.Concept;
 import rprogn.compiler.concept.ConceptFunction;
 import rprogn.compiler.concept.ConceptString;
@@ -15,7 +16,7 @@ public class Compiler {
 	
 	public static Concept[] compile(String input){
 		Stack<Concept> c = new Stack<Concept>();
-		int mode = MODE_GENERAL; // Mode identifies if we're in a string or whatever.
+		int mode = Flags.FlagToggled("z") ? MODE_ZSS : MODE_GENERAL; // Mode identifies if we're in a string or whatever.
 		String builtWord = new String();
 		String[] strings = input.split("");
 		int i=0;
@@ -25,7 +26,7 @@ public class Compiler {
 			// End a word.
 			if(subString.matches("\\s")){ // If we finish the word, we push it to the concept stack.
 				pushConceptFromWord(builtWord,mode,c);
-				mode=MODE_GENERAL;
+				mode=Flags.FlagToggled("z") ? MODE_ZSS : MODE_GENERAL;
 				builtWord = new String();
 				
 			// Pair Quotes, and make it assume string if General.
@@ -33,13 +34,13 @@ public class Compiler {
 				if(mode==MODE_GENERAL){
 					mode=MODE_STRING;
 				}
-				
+				int skip = input.indexOf(subString, i+1);
 				if(mode==MODE_ZSS){
-					System.out.println(input.substring(i+1,input.indexOf(subString, i+1)));
+					pushConceptFromWord(input.substring(i+1,skip),MODE_STRING,c);
 				}else{
-					builtWord+=input.substring(i+1,input.indexOf(subString, i+1));
+					builtWord+=input.substring(i+1,skip);
 				}
-				int match = input.indexOf(subString, i+1);
+				int match = skip;
 				i=match;
 			
 			// Enter a ZSS.

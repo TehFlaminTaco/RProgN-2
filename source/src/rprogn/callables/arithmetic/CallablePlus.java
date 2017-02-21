@@ -12,8 +12,8 @@ public class CallablePlus implements Callable {
 
 	@Override
 	public int Call(Interpreter interpreter, Scope scope) {
-		Var a = interpreter.reg.pop();
-		Var b = interpreter.reg.pop();
+		Var a = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+		Var b = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
 		
 		if(a instanceof VarString || b instanceof VarString){
 			interpreter.reg.push(new VarString(b.toString()+a.toString()));

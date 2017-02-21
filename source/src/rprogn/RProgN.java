@@ -12,6 +12,8 @@ public class RProgN {
 	public static void main(String[] args) {
 		Functions.setDefaults();
 		
+		Flags.SetFlag("z");
+		
 		String target=null;
 		for(String arg : args){
 			if(arg.substring(0, 1).equals("-")){
@@ -36,7 +38,8 @@ public class RProgN {
 			}
 			
 			while(!interpreter.reg.isEmpty()){
-				System.out.println(interpreter.reg.pop().toString());
+				String s = interpreter.reg.pop().toString();
+				if(interpreter.reg.isEmpty()){System.out.print(s);}else{System.out.println(s);};
 			}
 			
 		}catch(Exception e){
