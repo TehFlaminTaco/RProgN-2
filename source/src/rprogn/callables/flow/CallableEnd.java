@@ -1,14 +1,14 @@
 package rprogn.callables.flow;
 
 import rprogn.callables.Callable;
-import rprogn.functions.Functions;
+import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
 
 public class CallableEnd implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Functions scope) {
-		return Flow.flow.isEmpty() ? -1 : Flow.flow.pop();
+	public int Call(Interpreter interpreter, Scope scope) {
+		return -1; // Completely removed the old system of flow of control, this is only used in functions.
 	}
 
 	@Override

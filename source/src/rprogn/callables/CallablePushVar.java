@@ -1,6 +1,6 @@
 package rprogn.callables;
 
-import rprogn.functions.Functions;
+import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
 import rprogn.variable.Var;
 
@@ -13,7 +13,7 @@ public class CallablePushVar implements Callable {
 	}
 	
 	@Override
-	public int Call(Interpreter interpreter, Functions scope) {
+	public int Call(Interpreter interpreter, Scope scope) {
 		interpreter.reg.push(data);
 		return -1;
 	}

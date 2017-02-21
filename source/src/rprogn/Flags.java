@@ -7,7 +7,7 @@ public class Flags {
 	
 	
 	public static void SetFlag(String flag){
-		SetFlag(flag,true);
+		SetFlag(flag.toLowerCase(),flag == flag.toLowerCase());
 	}
 	
 	public static void SetFlag(String flag, boolean value){
@@ -15,7 +15,10 @@ public class Flags {
 	}
 	
 	public static boolean FlagToggled(String flag){
-		Boolean b = flags.get(flag);
-		return b==null ? false : b;
+		Boolean b = flags.get(flag.toLowerCase());
+		if(b==null||!b){
+			return flag!=flag.toLowerCase();
+		}
+		return flag==flag.toLowerCase();
 	}
 }

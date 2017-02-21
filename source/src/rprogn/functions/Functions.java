@@ -2,6 +2,7 @@ package rprogn.functions;
 
 import java.util.HashMap;
 
+import rprogn.Flags;
 import rprogn.callables.*;
 import rprogn.callables.arithmetic.CallableDivide;
 import rprogn.callables.arithmetic.CallableIntDivide;
@@ -10,6 +11,7 @@ import rprogn.callables.arithmetic.CallablePlus;
 import rprogn.callables.arithmetic.CallablePower;
 import rprogn.callables.arithmetic.CallableSubtract;
 import rprogn.callables.flow.CallableEnd;
+import rprogn.callables.flow.CallableFunc;
 import rprogn.variable.VarNumber;
 import rprogn.variable.VarString;
 
@@ -31,6 +33,7 @@ public class Functions {
 		newDefault(new CallablePower(), "^");
 		
 		// Flow of Control
+		newDefault(new CallableFunc(), "function", "{");
 		newDefault(new CallableEnd(), "end", "}");
 		
 	}
@@ -43,12 +46,20 @@ public class Functions {
 	
 	public static HashMap<String,Callable> default_functions = new HashMap<String,Callable>();
 	public HashMap<String,Callable> custom_asoc = new HashMap<String,Callable>();
+	public Functions parent = null;
 	public Callable get(String func) {
 		Callable out=null;
 		
 		out = custom_asoc.get(func);
 		if(out!=null){
 			return out;
+		}
+		
+		if(parent!=null){
+			out = parent.get(func);
+			if (out!=null){
+				return out;
+			}
 		}
 		
 		out = default_functions.get(func);
@@ -62,6 +73,10 @@ public class Functions {
 		
 		if(func.substring(0,1).equals("`")){
 			return new VarString(func.substring(1)).getCallable();
+		}
+		
+		if(Flags.FlagToggled("z")){
+			
 		}
 		
 		return null;

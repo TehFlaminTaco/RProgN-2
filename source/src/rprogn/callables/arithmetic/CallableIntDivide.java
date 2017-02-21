@@ -1,7 +1,7 @@
 package rprogn.callables.arithmetic;
 
 import rprogn.callables.Callable;
-import rprogn.functions.Functions;
+import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
 import rprogn.variable.Var;
 import rprogn.variable.VarNumber;
@@ -9,7 +9,7 @@ import rprogn.variable.VarNumber;
 public class CallableIntDivide implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Functions scope) {
+	public int Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.reg.pop();
 		Var b = interpreter.reg.pop();
 		

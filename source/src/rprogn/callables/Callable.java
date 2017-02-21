@@ -1,10 +1,10 @@
 package rprogn.callables;
 
-import rprogn.functions.Functions;
+import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
 
 public interface Callable {
-	public int Call(Interpreter interpreter, Functions scope);
+	public int Call(Interpreter interpreter, Scope scope);
 
 	public String describe();
 }
