@@ -12,4 +12,8 @@ public class VarStack extends Var {
 	public VarStack(Stack<Var> data){
 		this.data = data;
 	}
+	
+	public boolean truthy(){
+		return !data.isEmpty();
+	}
 }

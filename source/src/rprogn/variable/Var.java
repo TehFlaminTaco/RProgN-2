@@ -13,4 +13,8 @@ public class Var {
 		return "nil";
 	}
 
+	
+	public boolean truthy(){
+		return false;
+	}
 }

@@ -15,4 +15,8 @@ public class VarString extends Var {
 	public String toString(){
 		return data;
 	}
+	
+	public boolean truthy(){
+		return data.length()>0;
+	}
 }

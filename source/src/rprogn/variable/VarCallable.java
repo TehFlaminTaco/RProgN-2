@@ -32,4 +32,8 @@ public class VarCallable extends Var implements Callable {
 		return "A Variable that holds an array of concepts, which when called, parses those concepts.";
 	}
 	
+	public boolean truthy(){
+		return true;
+	}
+	
 }

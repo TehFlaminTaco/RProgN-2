@@ -12,6 +12,8 @@ import rprogn.callables.arithmetic.CallablePower;
 import rprogn.callables.arithmetic.CallableSubtract;
 import rprogn.callables.flow.CallableEnd;
 import rprogn.callables.flow.CallableFunc;
+import rprogn.callables.flow.CallableIf;
+import rprogn.callables.flow.CallableWhile;
 import rprogn.callables.misc.CallableAsoc;
 import rprogn.callables.misc.CallableCall;
 import rprogn.variable.VarNumber;
@@ -37,6 +39,8 @@ public class Functions {
 		// Flow of Control
 		newDefault(new CallableFunc(), "function", "{");
 		newDefault(new CallableEnd(), "end", "}");
+		newDefault(new CallableIf(), "if", "?");
+		newDefault(new CallableWhile(), "while", ":");
 		
 		// Misc
 		newDefault(new CallableCall(), "call","C");

@@ -22,4 +22,8 @@ public class VarNumber extends Var {
 		
 		return String.valueOf(data);
 	}
+
+	public boolean truthy(){
+		return data!=0;
+	}
 }
