@@ -9,7 +9,9 @@ import rprogn.callables.CallablePushVar;
 import rprogn.callables.CallableWrite;
 import rprogn.callables.arithmetic.CallableConcat;
 import rprogn.callables.arithmetic.CallableDivide;
+import rprogn.callables.arithmetic.CallableDuplicate;
 import rprogn.callables.arithmetic.CallableIntDivide;
+import rprogn.callables.arithmetic.CallableModulos;
 import rprogn.callables.arithmetic.CallableMultiply;
 import rprogn.callables.arithmetic.CallablePlus;
 import rprogn.callables.arithmetic.CallablePower;
@@ -21,6 +23,7 @@ import rprogn.callables.flow.CallableIf;
 import rprogn.callables.flow.CallableWhile;
 import rprogn.callables.misc.CallableAsoc;
 import rprogn.callables.misc.CallableCall;
+import rprogn.callables.misc.CallableLocalAsoc;
 import rprogn.callables.stack.CallableEndStack;
 import rprogn.callables.stack.CallableNewStack;
 import rprogn.callables.stack.CallableRange;
@@ -45,9 +48,11 @@ public class Functions {
 		newDefault(new CallableSubtract(), "-");
 		newDefault(new CallableMultiply(), "*");
 		newDefault(new CallableDivide(), "/");
-		newDefault(new CallableIntDivide(), "//");
+		newDefault(new CallableIntDivide(), "//", "÷");
 		newDefault(new CallablePower(), "^");
+		newDefault(new CallableModulos(), "%");
 		newDefault(new CallableConcat(), ".");
+		newDefault(new CallableDuplicate(), "]");
 		
 		// Flow of Control
 		newDefault(new CallableFunc(), "function", "{");
@@ -66,6 +71,7 @@ public class Functions {
 		// Misc
 		newDefault(new CallableCall(), "call","C");
 		newDefault(new CallableAsoc(), "asoc","=");
+		newDefault(new CallableLocalAsoc(), "@");
 	}
 	
 	

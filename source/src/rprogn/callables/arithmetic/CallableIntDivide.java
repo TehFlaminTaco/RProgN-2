@@ -14,6 +14,7 @@ public class CallableIntDivide implements Callable {
 		Var b = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
 		
 		if(a instanceof VarNumber && b instanceof VarNumber){
+			
 			interpreter.reg.push(new VarNumber((int)(((VarNumber)b).data / ((VarNumber)a).data)));
 		}
 		

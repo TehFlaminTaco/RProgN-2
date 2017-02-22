@@ -5,6 +5,7 @@ import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
 import rprogn.variable.Var;
 import rprogn.variable.VarCallable;
+import rprogn.variable.VarNumber;
 import rprogn.variable.VarStack;
 
 public class CallableFor implements Callable {
@@ -21,6 +22,32 @@ public class CallableFor implements Callable {
 					interpreter.reg.push(stack.data.get(i));
 					funcC.Call(interpreter, scope);
 				}
+				return -1;
+			}
+			if (key instanceof VarNumber){
+				Var max = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+				Var min = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+				if (!(max instanceof VarNumber)){
+					if (min!=null){interpreter.reg.push(min);}
+					if (max!=null){interpreter.reg.push(max);}
+					min = new VarNumber(1);
+					max = key;
+					key = new VarNumber(1);
+				}
+				if (!(min instanceof VarNumber)){
+					if (min!=null){interpreter.reg.push(min);}
+					min = max;
+					max = key;
+					key = new VarNumber(1);
+				}
+				VarNumber Nmin = (VarNumber) min;
+				VarNumber Nmax = (VarNumber) max;
+				VarNumber Nkey = (VarNumber) key;
+				for (int i=(int)Nmin.data; i<=(int)Nmax.data; i += (int)Nkey.data){
+					interpreter.reg.push(new VarNumber(i));
+					funcC.Call(interpreter, scope);
+				}
+				
 			}
 		}
 		return -1;

@@ -6,7 +6,7 @@ import rprogn.interpreter.Interpreter;
 import rprogn.variable.Var;
 import rprogn.variable.VarNumber;
 
-public class CallableSubtract implements Callable {
+public class CallableModulos implements Callable {
 
 	@Override
 	public int Call(Interpreter interpreter, Scope scope) {
@@ -14,7 +14,8 @@ public class CallableSubtract implements Callable {
 		Var b = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
 		
 		if(a instanceof VarNumber && b instanceof VarNumber){
-			interpreter.reg.push(new VarNumber(((VarNumber)a).data - ((VarNumber)b).data));
+			
+			interpreter.reg.push(new VarNumber((int)(((VarNumber)b).data % ((VarNumber)a).data)));
 		}
 		
 		return -1;
@@ -22,8 +23,7 @@ public class CallableSubtract implements Callable {
 
 	@Override
 	public String describe() {
-		
-		return "Pop the top two values from the active stack, The top value is subtracted from the value underneith, and the result is pushed to the active stack.";
+		return "Get the value of a % b";
 	}
 
 }
