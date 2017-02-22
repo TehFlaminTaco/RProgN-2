@@ -12,11 +12,11 @@ import rprogn.variable.Var;
 
 public class Interpreter {
 	public Stack<Var> reg;
-	public Stack<Var> alt;
+	public Stack<Stack<Var>> stored_reg; // You know it's good when you've got a 2d Stack.
 	
 	public Interpreter(){
 		reg = new Stack<Var>();
-		alt = new Stack<Var>();
+		stored_reg = new Stack<Stack<Var>>();
 	}
 	
 	public void execute(File file) throws FileNotFoundException, IOException{

@@ -20,7 +20,7 @@ public class VarCallable extends Var implements Callable {
 	
 	
 	public Callable getCallable(){
-		return otherDat==null ? this : otherDat;
+		return this;
 	}
 	
 	public String toString(){
@@ -28,7 +28,11 @@ public class VarCallable extends Var implements Callable {
 	}
 	
 	public int Call(Interpreter interpreter, Scope scope){
-		Parser.parse(data, interpreter, scope.functions);
+		if (otherDat==null){
+			Parser.parse(data, interpreter, scope.functions);
+		}else{
+			otherDat.Call(interpreter, scope);
+		}
 		return -1;
 	}
 	

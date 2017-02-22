@@ -21,8 +21,10 @@ import rprogn.callables.flow.CallableIf;
 import rprogn.callables.flow.CallableWhile;
 import rprogn.callables.misc.CallableAsoc;
 import rprogn.callables.misc.CallableCall;
+import rprogn.callables.stack.CallableEndStack;
 import rprogn.callables.stack.CallableNewStack;
 import rprogn.callables.stack.CallableRange;
+import rprogn.callables.stack.CallableStartStack;
 import rprogn.callables.stack.CallableToStack;
 import rprogn.variable.VarCallable;
 import rprogn.variable.VarNumber;
@@ -58,6 +60,8 @@ public class Functions {
 		newDefault(new CallableNewStack(), "stack", "s");
 		newDefault(new CallableToStack(), "tostack", "S");
 		newDefault(new CallableRange(), "range", "R");
+		newDefault(new CallableStartStack(), "(");
+		newDefault(new CallableEndStack(), ")");
 		
 		// Misc
 		newDefault(new CallableCall(), "call","C");
