@@ -50,7 +50,14 @@ public class Compiler {
 			// If we're in a ZSS, Handle pushing of individual strings like pushing of full words.
 			}else if(mode==MODE_ZSS){
 				if(subString.equals("`")){
-					pushConceptFromWord(input.substring(i+1,i+2),MODE_STRING,c);
+					if(input.length() >= i+2){
+						pushConceptFromWord(input.substring(i+1,i+2),MODE_STRING,c);
+					}
+					i++;
+				}else if(subString.equals("#")){
+					if(input.length() >= i+2){
+						pushConceptFromWord(input.substring(i,i+2),MODE_GENERAL,c);
+					}
 					i++;
 				}else{
 					pushConceptFromWord(subString,MODE_GENERAL,c);
@@ -68,7 +75,7 @@ public class Compiler {
 	}
 	
 	public static void pushConceptFromWord(String builtWord, int mode, Stack<Concept> c){
-		if(builtWord.length()>0){ // Only valid words! :D
+		if(builtWord.length()>0 || mode == MODE_STRING){ // Only valid words! :D
 			c.push(ConceptFromWord(builtWord,mode));
 		}
 	}
@@ -80,7 +87,6 @@ public class Compiler {
 		case MODE_STRING:
 			return new ConceptString(builtWord);
 		case MODE_ZSS:
-			System.err.println("This shouldn't be possible, and it's basically horrifying.\nA ZSS was pushed in full.\n"+builtWord);
 			return new ConceptZSS(builtWord);
 		}
 		return null;

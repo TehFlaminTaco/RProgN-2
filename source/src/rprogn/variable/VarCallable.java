@@ -8,15 +8,19 @@ import rprogn.interpreter.Parser;
 
 public class VarCallable extends Var implements Callable {
 	public Concept[] data;
-	
+	public Callable otherDat;
 	
 	public VarCallable(Concept[] init){
 		data = init;
 	}
 	
+	public VarCallable(Callable init){
+		otherDat = init;
+	}
+	
 	
 	public Callable getCallable(){
-		return this;
+		return otherDat==null ? this : otherDat;
 	}
 	
 	public String toString(){

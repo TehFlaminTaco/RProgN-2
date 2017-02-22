@@ -3,7 +3,11 @@ package rprogn.functions;
 import java.util.HashMap;
 
 import rprogn.Flags;
-import rprogn.callables.*;
+import rprogn.callables.Callable;
+import rprogn.callables.CallablePrint;
+import rprogn.callables.CallablePushVar;
+import rprogn.callables.CallableWrite;
+import rprogn.callables.arithmetic.CallableConcat;
 import rprogn.callables.arithmetic.CallableDivide;
 import rprogn.callables.arithmetic.CallableIntDivide;
 import rprogn.callables.arithmetic.CallableMultiply;
@@ -11,11 +15,16 @@ import rprogn.callables.arithmetic.CallablePlus;
 import rprogn.callables.arithmetic.CallablePower;
 import rprogn.callables.arithmetic.CallableSubtract;
 import rprogn.callables.flow.CallableEnd;
+import rprogn.callables.flow.CallableFor;
 import rprogn.callables.flow.CallableFunc;
 import rprogn.callables.flow.CallableIf;
 import rprogn.callables.flow.CallableWhile;
 import rprogn.callables.misc.CallableAsoc;
 import rprogn.callables.misc.CallableCall;
+import rprogn.callables.stack.CallableNewStack;
+import rprogn.callables.stack.CallableRange;
+import rprogn.callables.stack.CallableToStack;
+import rprogn.variable.VarCallable;
 import rprogn.variable.VarNumber;
 import rprogn.variable.VarString;
 
@@ -27,6 +36,7 @@ public class Functions {
 		
 		// Generic Functions
 		newDefault(new CallablePrint(), "print", "p");
+		newDefault(new CallableWrite(), "write", "w");
 		
 		// Arithmetic
 		newDefault(new CallablePlus(), "+");
@@ -35,12 +45,19 @@ public class Functions {
 		newDefault(new CallableDivide(), "/");
 		newDefault(new CallableIntDivide(), "//");
 		newDefault(new CallablePower(), "^");
+		newDefault(new CallableConcat(), ".");
 		
 		// Flow of Control
 		newDefault(new CallableFunc(), "function", "{");
 		newDefault(new CallableEnd(), "end", "}");
 		newDefault(new CallableIf(), "if", "?");
 		newDefault(new CallableWhile(), "while", ":");
+		newDefault(new CallableFor(), "for", ";");
+		
+		// Stacks
+		newDefault(new CallableNewStack(), "stack", "s");
+		newDefault(new CallableToStack(), "tostack", "S");
+		newDefault(new CallableRange(), "range", "R");
 		
 		// Misc
 		newDefault(new CallableCall(), "call","C");
@@ -82,6 +99,11 @@ public class Functions {
 		
 		if(func.substring(0,1).equals("`")){
 			return new VarString(func.substring(1)).getCallable();
+		}
+		
+		if (func.substring(0,1).equals("#")){
+			
+			return new CallablePushVar(new VarCallable(get(func.substring(1)))); // This horrific thing gets everything after a #, and pushes the function it represents.
 		}
 		
 		if(Flags.FlagToggled("z")){
