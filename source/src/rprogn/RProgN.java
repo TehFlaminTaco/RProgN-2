@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 
 import rprogn.functions.Functions;
 import rprogn.interpreter.Interpreter;
+import rprogn.variable.VarNumber;
+import rprogn.variable.VarString;
 
 public class RProgN {
 	static Interpreter interpreter;
@@ -14,14 +16,24 @@ public class RProgN {
 		
 		Flags.SetFlag("z");
 		
-		String target=null;
-		for(String arg : args){
-			if(arg.length()>1 && arg.substring(0, 1).equals("-")){
-				for(String s : arg.substring(2).split("")){
+		String target=args[0];
+		
+		interpreter = new Interpreter();
+		
+		for (int i=1; i<args.length; i++){
+			String arg = args[i];
+			if(arg.length()>2 && arg.substring(0, 2).equals("--")){
+				for(String s : arg.substring(3).split("")){
 					Flags.SetFlag(s);
 				}
 			}else{
-				target = arg;
+				if (arg.matches("^'.*'$")){
+					interpreter.reg.push(new VarString(arg.substring(1,arg.length()-1)));
+				}else if(arg.matches("(-?\\d+(\\.\\d*)?|(-?\\d+)?.\\d+)")){
+					interpreter.reg.push(new VarNumber(arg));
+				}else{
+					interpreter.reg.push(new VarString(arg));
+				}
 			}
 		}
 		
@@ -29,7 +41,6 @@ public class RProgN {
 			System.err.println("Could not run no code!");
 		}
 		
-		interpreter = new Interpreter();
 		try{
 			if(Flags.FlagToggled("s")){
 				interpreter.execute(target);

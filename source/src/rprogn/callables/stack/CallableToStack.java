@@ -46,6 +46,22 @@ public class CallableToStack implements Callable {
 			}
 			interpreter.reg.push(newStack);
 		}
+		if(var instanceof VarCallable){
+			Var num = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+			VarCallable func = (VarCallable) var;
+			if(num instanceof VarNumber){
+				VarNumber varNum = (VarNumber) num;
+				VarStack newStack = new VarStack();
+				for (int i = 1; i <= varNum.data; i++){
+					interpreter.reg.push(new VarNumber(i));
+					((VarCallable) func).Call(interpreter, scope);
+					if(!interpreter.reg.isEmpty()){
+						newStack.data.push(interpreter.reg.pop());
+					}
+				}
+				interpreter.reg.push(newStack);
+			}
+		}
 		return -1;
 	}
 

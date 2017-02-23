@@ -18,10 +18,10 @@ public class VarStack extends Var {
 	}
 	
 	public String toString(){
-		String s = "( ";
+		String s = "{";
 		for (int i = 0; i < data.size(); i++){
-			s = s + '"' + data.get(i).toString() + '"' + ((i+1)<data.size() ? " " : "");
+			s = s + data.get(i).toString() + ((i+1)<data.size() ? "," : "");
 		}
-		return s + " )";
+		return s + "}";
 	}
 }
