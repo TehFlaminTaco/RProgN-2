@@ -1,6 +1,5 @@
 package rprogn.callables.arithmetic;
 
-import rprogn.callable.tacted.CallableRepeated;
 import rprogn.callables.Callable;
 import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
@@ -33,17 +32,15 @@ public class CallableMultiply implements Callable {
 		}
 		
 		if(b instanceof VarNumber && a instanceof VarCallable){
-			CallableRepeated repCall = new CallableRepeated();
-			repCall.count = (int) ((VarNumber) b).data;
-			repCall.parent = a.getCallable();
-			interpreter.reg.push(new VarCallable(repCall));
+			for (int i=1; i<=(int) ((VarNumber) b).data; i++){
+				((Callable)a).Call(interpreter, scope);
+			}
 		}
 		
 		if(a instanceof VarNumber && b instanceof VarCallable){
-			CallableRepeated repCall = new CallableRepeated();
-			repCall.count = (int) ((VarNumber) a).data;
-			repCall.parent = b.getCallable();
-			interpreter.reg.push(new VarCallable(repCall));
+			for (int i=1; i<=(int) ((VarNumber) a).data; i++){
+				((Callable)b).Call(interpreter, scope);
+			}
 		}
 		
 		return -1;
