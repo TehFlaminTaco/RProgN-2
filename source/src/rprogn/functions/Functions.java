@@ -15,6 +15,7 @@ import rprogn.callables.arithmetic.CallableMultiply;
 import rprogn.callables.arithmetic.CallablePlus;
 import rprogn.callables.arithmetic.CallablePower;
 import rprogn.callables.arithmetic.CallableSubtract;
+import rprogn.callables.arithmetic.CallableToNumber;
 import rprogn.callables.flow.CallableEnd;
 import rprogn.callables.flow.CallableFor;
 import rprogn.callables.flow.CallableFunc;
@@ -22,6 +23,7 @@ import rprogn.callables.flow.CallableIf;
 import rprogn.callables.flow.CallableWhile;
 import rprogn.callables.misc.CallableAsoc;
 import rprogn.callables.misc.CallableCall;
+import rprogn.callables.misc.CallableLen;
 import rprogn.callables.misc.CallableLocalAsoc;
 import rprogn.callables.reg.CallableDuplicate;
 import rprogn.callables.reg.CallableRegPop;
@@ -54,6 +56,7 @@ public class Functions {
 		newDefault(new CallablePower(), "^");
 		newDefault(new CallableModulos(), "%");
 		newDefault(new CallableConcat(), ".");
+		newDefault(new CallableToNumber(), "n");
 		
 		// Reg Manipulation
 		newDefault(new CallableDuplicate(), "]");
@@ -78,6 +81,7 @@ public class Functions {
 		newDefault(new CallableCall(), "call","C");
 		newDefault(new CallableAsoc(), "asoc","=");
 		newDefault(new CallableLocalAsoc(), "@");
+		newDefault(new CallableLen(), "len", "L");
 	}
 	
 	

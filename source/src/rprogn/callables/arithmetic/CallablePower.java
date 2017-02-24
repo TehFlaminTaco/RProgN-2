@@ -14,7 +14,7 @@ public class CallablePower implements Callable {
 		Var b = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
 		
 		if(a instanceof VarNumber && b instanceof VarNumber){
-			interpreter.reg.push(new VarNumber(Math.pow(((VarNumber)b).data, ((VarNumber)a).data)));
+			interpreter.reg.push(new VarNumber(((VarNumber)b).data.pow(((VarNumber)a).data.intValue())));
 		}
 		
 		return -1;

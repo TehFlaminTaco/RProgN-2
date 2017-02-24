@@ -27,7 +27,7 @@ public class CallableToStack implements Callable {
 			VarStack newStack = new VarStack();
 			Var func = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
 			if(func instanceof VarCallable){
-				for (int i = 1; i <= varNum.data; i++){
+				for (int i = 1; i <= varNum.data.intValue(); i++){
 					interpreter.reg.push(new VarNumber(i));
 					((VarCallable) func).Call(interpreter, scope);
 					if(!interpreter.reg.isEmpty()){
@@ -36,11 +36,11 @@ public class CallableToStack implements Callable {
 				}
 			}else if(func!=null){
 				interpreter.reg.push(var);
-				for (int i = 1; i <= varNum.data; i++){
+				for (int i = 1; i <= varNum.data.intValue(); i++){
 					newStack.data.push(new VarNumber(i));
 				}
 			}else{
-				for (int i = 1; i <= varNum.data; i++){
+				for (int i = 1; i <= varNum.data.intValue(); i++){
 					newStack.data.push(new VarNumber(i));
 				}
 			}
@@ -52,7 +52,7 @@ public class CallableToStack implements Callable {
 			if(num instanceof VarNumber){
 				VarNumber varNum = (VarNumber) num;
 				VarStack newStack = new VarStack();
-				for (int i = 1; i <= varNum.data; i++){
+				for (int i = 1; i <= varNum.data.intValue(); i++){
 					interpreter.reg.push(new VarNumber(i));
 					((VarCallable) func).Call(interpreter, scope);
 					if(!interpreter.reg.isEmpty()){

@@ -1,5 +1,7 @@
 package rprogn.callables.stack;
 
+import java.math.BigDecimal;
+
 import rprogn.callables.Callable;
 import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
@@ -25,12 +27,13 @@ public class CallableRange implements Callable {
 			if(varb != null){
 				if(vart instanceof VarNumber && varb instanceof VarNumber){
 					VarStack newStack = new VarStack();
-					int a = Math.min((int) ((VarNumber) varb).data, (int) ((VarNumber) vart).data);
-					int b = Math.max((int) ((VarNumber) varb).data, (int) ((VarNumber) vart).data);
-					for (int i = a; i <= b; i++){
+					BigDecimal a = ((VarNumber) varb).data.max(((VarNumber) vart).data);
+					BigDecimal b = ((VarNumber) varb).data.min(((VarNumber) vart).data);
+					
+					for (BigDecimal i = b; i.compareTo(a)==-1; i=i.add(new BigDecimal(1))){
 						newStack.data.push(new VarNumber(i));
 					}
-					if (b==((int) ((VarNumber) varb).data)){
+					if ((int) ((VarNumber) varb).data.compareTo(b)==0){
 						VarStack reverseStack = new VarStack();
 						while (!newStack.data.isEmpty()){
 							reverseStack.data.push(newStack.data.pop());

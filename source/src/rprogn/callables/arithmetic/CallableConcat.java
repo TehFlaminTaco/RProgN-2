@@ -16,7 +16,12 @@ public class CallableConcat implements Callable {
 		Var b = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
 		Var a = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
 		
-		if(b instanceof VarStack){
+		if(b instanceof VarStack || a instanceof VarStack){
+			Var stepper=null;
+			if (a instanceof VarStack){
+				stepper = b;
+				b = a;
+			}
 			if(a!=null){
 				interpreter.reg.push(a);
 			}
@@ -25,6 +30,9 @@ public class CallableConcat implements Callable {
 				Var o = stack.data.get(0);
 				for(int i = 1; i < stack.data.size(); i++){
 					o = concat(o, stack.data.get(i));
+					if(stepper!=null){
+						o = concat(o, stepper);
+					}
 				}
 				interpreter.reg.push(o);
 			}

@@ -15,7 +15,7 @@ public class CallableModulos implements Callable {
 		
 		if(a instanceof VarNumber && b instanceof VarNumber){
 			
-			interpreter.reg.push(new VarNumber((int)(((VarNumber)b).data % ((VarNumber)a).data)));
+			interpreter.reg.push(new VarNumber((((VarNumber)b).data.remainder(((VarNumber)a).data))));
 		}
 		
 		return -1;

@@ -1,5 +1,7 @@
 package rprogn.callables.flow;
 
+import java.math.BigDecimal;
+
 import rprogn.callables.Callable;
 import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
@@ -43,7 +45,7 @@ public class CallableFor implements Callable {
 				VarNumber Nmin = (VarNumber) min;
 				VarNumber Nmax = (VarNumber) max;
 				VarNumber Nkey = (VarNumber) key;
-				for (int i=(int)Nmin.data; i<=(int)Nmax.data; i += (int)Nkey.data){
+				for (BigDecimal i=Nmin.data; i.compareTo(Nmax.data)<=0; i=i.add(Nkey.data)){
 					interpreter.reg.push(new VarNumber(i));
 					funcC.Call(interpreter, scope);
 				}

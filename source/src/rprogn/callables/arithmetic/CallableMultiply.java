@@ -1,5 +1,7 @@
 package rprogn.callables.arithmetic;
 
+import java.math.BigDecimal;
+
 import rprogn.callables.Callable;
 import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
@@ -16,29 +18,29 @@ public class CallableMultiply implements Callable {
 		Var b = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
 		
 		if(a instanceof VarString && b instanceof VarNumber){
-			interpreter.reg.push(new VarString(new String(new char[(int)((VarNumber)b).data]).replace("\0", ((VarString)a).data)));
+			interpreter.reg.push(new VarString(new String(new char[((VarNumber)b).data.intValue()]).replace("\0", ((VarString)a).data)));
 			return -1;
 		}
 		
 		if(b instanceof VarString && a instanceof VarNumber){
-			interpreter.reg.push(new VarString(new String(new char[(int)((VarNumber)a).data]).replace("\0", ((VarString)b).data)));
+			interpreter.reg.push(new VarString(new String(new char[((VarNumber)a).data.intValue()]).replace("\0", ((VarString)b).data)));
 			return -1;
 		}
 		
 		
 		if(a instanceof VarNumber && b instanceof VarNumber){
-			interpreter.reg.push(new VarNumber(((VarNumber)b).data * ((VarNumber)a).data));
+			interpreter.reg.push(new VarNumber(((VarNumber)b).data.multiply(((VarNumber)a).data)));
 			return -1;
 		}
 		
 		if(b instanceof VarNumber && a instanceof VarCallable){
-			for (int i=1; i<=(int) ((VarNumber) b).data; i++){
+			for (BigDecimal i=new BigDecimal(1); i.compareTo(((VarNumber)b).data)<=0; i=i.add(new BigDecimal(1))){
 				((Callable)a).Call(interpreter, scope);
 			}
 		}
 		
 		if(a instanceof VarNumber && b instanceof VarCallable){
-			for (int i=1; i<=(int) ((VarNumber) a).data; i++){
+			for (BigDecimal i=new BigDecimal(1); i.compareTo(((VarNumber)b).data)<=0; i=i.add(new BigDecimal(1))){
 				((Callable)b).Call(interpreter, scope);
 			}
 		}

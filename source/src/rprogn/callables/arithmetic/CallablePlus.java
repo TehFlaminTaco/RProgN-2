@@ -51,7 +51,7 @@ public class CallablePlus implements Callable {
 		
 		if(a instanceof VarNumber){
 			if(b instanceof VarNumber){
-				return new VarNumber(((VarNumber) a).data + ((VarNumber) b).data);
+				return new VarNumber(((VarNumber) a).data.add(((VarNumber) b).data));
 			}
 		}
 		return null;
