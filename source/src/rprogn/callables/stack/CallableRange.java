@@ -14,8 +14,8 @@ public class CallableRange implements Callable {
 
 	@Override
 	public int Call(Interpreter interpreter, Scope scope) {
-		Var vart = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
-		Var varb = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+		Var vart = interpreter.pop();
+		Var varb = interpreter.pop();
 		if(vart!=null){
 			if(varb == null){
 				if(vart instanceof VarNumber){
@@ -30,7 +30,7 @@ public class CallableRange implements Callable {
 					BigDecimal a = ((VarNumber) varb).data.max(((VarNumber) vart).data);
 					BigDecimal b = ((VarNumber) varb).data.min(((VarNumber) vart).data);
 					
-					for (BigDecimal i = b; i.compareTo(a)==-1; i=i.add(new BigDecimal(1))){
+					for (BigDecimal i = b; i.compareTo(a)<=0; i=i.add(new BigDecimal(1))){
 						newStack.data.push(new VarNumber(i));
 					}
 					if ((int) ((VarNumber) varb).data.compareTo(b)==0){

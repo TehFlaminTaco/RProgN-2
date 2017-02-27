@@ -10,12 +10,12 @@ public class CallableIf implements Callable {
 
 	@Override
 	public int Call(Interpreter interpreter, Scope scope) {
-		Var func_b = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
-		Var func_a = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+		Var func_b = interpreter.pop();
+		Var func_a = interpreter.pop();
 		Var val;
 		
 		if(func_a instanceof VarCallable){
-			val = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+			val = interpreter.pop();
 		}else{
 			val = func_a;
 			func_a = func_b;

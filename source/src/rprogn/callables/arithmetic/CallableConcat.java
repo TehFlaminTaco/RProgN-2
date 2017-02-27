@@ -13,8 +13,8 @@ public class CallableConcat implements Callable {
 
 	@Override
 	public int Call(Interpreter interpreter, Scope scope) {
-		Var b = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
-		Var a = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+		Var b = interpreter.pop();
+		Var a = interpreter.pop();
 		
 		if(b instanceof VarStack || a instanceof VarStack){
 			Var stepper=null;

@@ -11,8 +11,8 @@ public class CallableAsoc implements Callable {
 
 	@Override
 	public int Call(Interpreter interpreter, Scope scope) {
-		Var name = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
-		Var var = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+		Var name = interpreter.pop();
+		Var var = interpreter.pop();
 		
 		if(name instanceof VarString && var != null){
 			Functions funcs = scope.functions;

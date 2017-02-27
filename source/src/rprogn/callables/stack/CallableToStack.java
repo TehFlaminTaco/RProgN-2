@@ -13,7 +13,7 @@ public class CallableToStack implements Callable {
 
 	@Override
 	public int Call(Interpreter interpreter, Scope scope) {
-		Var var = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+		Var var = interpreter.pop();
 		if(var instanceof VarString){
 			VarStack newStack = new VarStack();
 			VarString varStr = (VarString) var;
@@ -25,7 +25,7 @@ public class CallableToStack implements Callable {
 		if(var instanceof VarNumber){
 			VarNumber varNum = (VarNumber) var;
 			VarStack newStack = new VarStack();
-			Var func = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+			Var func = interpreter.pop();
 			if(func instanceof VarCallable){
 				for (int i = 1; i <= varNum.data.intValue(); i++){
 					interpreter.reg.push(new VarNumber(i));
@@ -47,7 +47,7 @@ public class CallableToStack implements Callable {
 			interpreter.reg.push(newStack);
 		}
 		if(var instanceof VarCallable){
-			Var num = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+			Var num = interpreter.pop();
 			VarCallable func = (VarCallable) var;
 			if(num instanceof VarNumber){
 				VarNumber varNum = (VarNumber) num;

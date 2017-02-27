@@ -14,8 +14,8 @@ public class CallableMultiply implements Callable {
 
 	@Override
 	public int Call(Interpreter interpreter, Scope scope) {
-		Var a = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
-		Var b = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+		Var a = interpreter.pop();
+		Var b = interpreter.pop();
 		
 		if(a instanceof VarString && b instanceof VarNumber){
 			interpreter.reg.push(new VarString(new String(new char[((VarNumber)b).data.intValue()]).replace("\0", ((VarString)a).data)));

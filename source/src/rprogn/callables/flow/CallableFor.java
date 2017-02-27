@@ -14,10 +14,10 @@ public class CallableFor implements Callable {
 
 	@Override
 	public int Call(Interpreter interpreter, Scope scope) {
-		Var func = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+		Var func = interpreter.pop();
 		if (func instanceof VarCallable){
 			VarCallable funcC = (VarCallable) func;
-			Var key = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+			Var key = interpreter.pop();
 			if (key instanceof VarStack){
 				VarStack stack = (VarStack) key;
 				for (int i=0; i < stack.data.size(); i++){
@@ -27,8 +27,8 @@ public class CallableFor implements Callable {
 				return -1;
 			}
 			if (key instanceof VarNumber){
-				Var max = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
-				Var min = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+				Var max = interpreter.pop();
+				Var min = interpreter.pop();
 				if (!(max instanceof VarNumber)){
 					if (min!=null){interpreter.reg.push(min);}
 					if (max!=null){interpreter.reg.push(max);}

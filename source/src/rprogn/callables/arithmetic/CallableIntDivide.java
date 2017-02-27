@@ -10,8 +10,8 @@ public class CallableIntDivide implements Callable {
 
 	@Override
 	public int Call(Interpreter interpreter, Scope scope) {
-		Var a = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
-		Var b = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+		Var a = interpreter.pop();
+		Var b = interpreter.pop();
 		
 		if(a instanceof VarNumber && b instanceof VarNumber){
 			

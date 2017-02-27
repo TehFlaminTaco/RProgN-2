@@ -34,4 +34,8 @@ public class Interpreter {
 		Parser.parse(concepts,this);
 	}
 	
+	public Var pop(){
+		return reg.isEmpty() ? null : reg.pop();
+	}
+	
 }

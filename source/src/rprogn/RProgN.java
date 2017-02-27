@@ -19,7 +19,6 @@ public class RProgN {
 		String target=args[0];
 		
 		interpreter = new Interpreter();
-		
 		for (int i=1; i<args.length; i++){
 			String arg = args[i];
 			if(arg.length()>2 && arg.substring(0, 2).equals("--")){

@@ -14,13 +14,20 @@ import rprogn.callables.arithmetic.CallableModulos;
 import rprogn.callables.arithmetic.CallableMultiply;
 import rprogn.callables.arithmetic.CallablePlus;
 import rprogn.callables.arithmetic.CallablePower;
+import rprogn.callables.arithmetic.CallableSqrt;
 import rprogn.callables.arithmetic.CallableSubtract;
 import rprogn.callables.arithmetic.CallableToNumber;
+import rprogn.callables.bitwiseoperations.CallableBitwiseAnd;
+import rprogn.callables.bitwiseoperations.CallableBitwiseOr;
 import rprogn.callables.flow.CallableEnd;
 import rprogn.callables.flow.CallableFor;
 import rprogn.callables.flow.CallableFunc;
 import rprogn.callables.flow.CallableIf;
 import rprogn.callables.flow.CallableWhile;
+import rprogn.callables.logic.CallableEquals;
+import rprogn.callables.logic.CallableGreaterThan;
+import rprogn.callables.logic.CallableLessThan;
+import rprogn.callables.logic.CallableNot;
 import rprogn.callables.misc.CallableAsoc;
 import rprogn.callables.misc.CallableCall;
 import rprogn.callables.misc.CallableLen;
@@ -57,6 +64,17 @@ public class Functions {
 		newDefault(new CallableModulos(), "%");
 		newDefault(new CallableConcat(), ".");
 		newDefault(new CallableToNumber(), "n");
+		newDefault(new CallableSqrt(), "o");
+		
+		// Logical Functions
+		newDefault(new CallableEquals(), "equals", "e");
+		newDefault(new CallableNot(), "¬");
+		newDefault(new CallableLessThan(), "<");
+		newDefault(new CallableGreaterThan(), ">");
+		
+		// Bitwise Functions
+		newDefault(new CallableBitwiseOr(), "or", "|");
+		newDefault(new CallableBitwiseAnd(), "and", "&");
 		
 		// Reg Manipulation
 		newDefault(new CallableDuplicate(), "]");

@@ -1,29 +1,23 @@
-package rprogn.callables.reg;
+package rprogn.callables.logic;
 
 import rprogn.callables.Callable;
 import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
 import rprogn.variable.Var;
+import rprogn.variable.VarNumber;
 
-public class CallableRegSwap implements Callable {
+public class CallableNot implements Callable {
 
 	@Override
 	public int Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.pop();
-		Var b = interpreter.pop();
-		
-		if(a!=null){
-			interpreter.reg.push(a);
-		}
-		if(b!=null){
-			interpreter.reg.push(b);
-		}
+		interpreter.reg.push(a.truthy() ? new VarNumber(0) : new VarNumber(1));
 		return -1;
 	}
 
 	@Override
 	public String describe() {
-		return "Swap the top two values on the reg stack.";
+		return "Push 1 if the value on top of the stack is falsy, 0 otherwise.";
 	}
 
 }

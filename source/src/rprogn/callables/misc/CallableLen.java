@@ -13,7 +13,7 @@ public class CallableLen implements Callable {
 
 	@Override
 	public int Call(Interpreter interpreter, Scope scope) {
-		Var var = interpreter.reg.isEmpty() ? null : interpreter.reg.pop();
+		Var var = interpreter.pop();
 		if(var instanceof VarNumber){
 			interpreter.reg.push(new VarNumber(String.valueOf(((VarNumber)var).data).length()));
 		}
