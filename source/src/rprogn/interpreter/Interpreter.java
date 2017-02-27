@@ -31,7 +31,11 @@ public class Interpreter {
 	
 	public void execute(String string){
 		Concept[] concepts = Compiler.compile(string);
-		Parser.parse(concepts,this);
+		try{
+			Parser.parse(concepts,this);
+		}catch(Exception e){
+			System.err.println(e.toString());
+		}
 	}
 	
 	public Var pop(){

@@ -16,6 +16,15 @@ public class CallableConcat implements Callable {
 		Var b = interpreter.pop();
 		Var a = interpreter.pop();
 		
+		if(a==null){
+			interpreter.reg.push(b);
+			return -1;
+		}
+		if(b==null){
+			interpreter.reg.push(a);
+			return -1;
+		}
+		
 		if(b instanceof VarStack || a instanceof VarStack){
 			Var stepper=null;
 			if (a instanceof VarStack){

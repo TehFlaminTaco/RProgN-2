@@ -9,7 +9,7 @@ public class CallableToNumber implements Callable {
 
 	@Override
 	public int Call(Interpreter interpreter, Scope scope) {
-		interpreter.reg.push(new VarNumber(interpreter.reg.pop()));
+		interpreter.reg.push(new VarNumber(interpreter.pop()));
 		return -1;
 	}
 

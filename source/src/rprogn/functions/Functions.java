@@ -64,7 +64,7 @@ public class Functions {
 		newDefault(new CallableModulos(), "%");
 		newDefault(new CallableConcat(), ".");
 		newDefault(new CallableToNumber(), "n");
-		newDefault(new CallableSqrt(), "o");
+		newDefault(new CallableSqrt(), "š");
 		
 		// Logical Functions
 		newDefault(new CallableEquals(), "equals", "e");

@@ -23,7 +23,13 @@ public class VarNumber extends Var {
 	
 	public VarNumber(Var var) {
 		if (var instanceof VarString){
-			this.data = new BigDecimal(((VarString) var).data);
+			try{
+				this.data = new BigDecimal(((VarString) var).data);
+			}catch(Exception e){
+				// Literally just try it. Do nothing if we fail.
+				
+				// Is there a correct way to do this?
+			}
 		}
 		if (var instanceof VarNumber){
 			this.data = ((VarNumber) var).data;

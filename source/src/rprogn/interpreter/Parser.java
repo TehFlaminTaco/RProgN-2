@@ -32,7 +32,8 @@ public class Parser {
 							i=I;
 						}
 					}catch(Exception e){
-						e.printStackTrace();
+						System.err.println("ERROR AT WORD "+(i+1)+" \""+concepts[i].toString()+"\"\n"+e.toString());
+						//e.printStackTrace();
 					}
 				}
 			}else if(concept instanceof ConceptString){
