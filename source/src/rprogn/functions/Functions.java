@@ -126,6 +126,10 @@ public class Functions {
 			return new CallablePushVar(new VarCallable(get(func.substring(1)))); // This horrific thing gets everything after a #, and pushes the function it represents.
 		}
 		
+		if (func.substring(0,1).equals("$")){
+			return new VarNumber(func.substring(1)).getCallable();
+		}
+		
 		if(Flags.FlagToggled("z")){
 			
 		}

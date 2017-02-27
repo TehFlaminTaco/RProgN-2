@@ -59,6 +59,13 @@ public class Compiler {
 						pushConceptFromWord(input.substring(i,i+2),MODE_GENERAL,c);
 					}
 					i++;
+				}else if(subString.equals("$")){
+					String s = "";
+					String part;
+					while((part=input.substring(++i,i+1)).matches("[\\d.-]")){
+						s = s + part;
+					}
+					pushConceptFromWord("$"+s,MODE_GENERAL,c);
 				}else{
 					pushConceptFromWord(subString,MODE_GENERAL,c);
 				}
