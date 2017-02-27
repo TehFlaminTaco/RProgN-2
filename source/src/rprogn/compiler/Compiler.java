@@ -66,6 +66,7 @@ public class Compiler {
 						s = s + part;
 					}
 					pushConceptFromWord("$"+s,MODE_GENERAL,c);
+					i--;
 				}else{
 					pushConceptFromWord(subString,MODE_GENERAL,c);
 				}
