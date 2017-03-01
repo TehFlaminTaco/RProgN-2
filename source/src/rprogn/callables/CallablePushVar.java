@@ -20,7 +20,7 @@ public class CallablePushVar implements Callable {
 	
 	@Override
 	public String describe(){
-		return "An Arbitrary callable which pushes a value to the reg stack.";
+		return "Push the "+this.data.type()+" \""+data.toString()+"\" to the stack.";
 	}
 	
 }

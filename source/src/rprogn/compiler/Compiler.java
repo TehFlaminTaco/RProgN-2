@@ -51,7 +51,7 @@ public class Compiler {
 			}else if(mode==MODE_ZSS){
 				if(subString.equals("`")){
 					if(input.length() >= i+2){
-						pushConceptFromWord(input.substring(i+1,i+2),MODE_STRING,c);
+						pushConceptFromWord(input.substring(i,i+2),MODE_GENERAL,c);
 					}
 					i++;
 				}else if(subString.equals("#")){

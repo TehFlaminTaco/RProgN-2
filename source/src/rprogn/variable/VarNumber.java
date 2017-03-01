@@ -43,4 +43,8 @@ public class VarNumber extends Var {
 	public boolean truthy(){
 		return data.compareTo(new BigDecimal(0))!=0;
 	}
+	
+	public String type(){
+		return "number";
+	}
 }

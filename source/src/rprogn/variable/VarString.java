@@ -19,4 +19,8 @@ public class VarString extends Var {
 	public boolean truthy(){
 		return data.length()>0;
 	}
+	
+	public String type(){
+		return "string";
+	}
 }

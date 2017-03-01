@@ -39,6 +39,9 @@ public class CallableSort implements Callable {
 	}
 	
 	public static VarStack sort(Interpreter interpreter, Scope scope, Stack<Var> stack, Callable func){
+		if(stack.size()<=1){
+			return new VarStack(stack);
+		}
 		Stack<Var> l = new Stack<Var>();
 		Stack<Var> r = new Stack<Var>();
 		int pivot = (int) stack.size()/2;
@@ -60,13 +63,9 @@ public class CallableSort implements Callable {
 			}
 		}
 		
-		if(l.size()>1){
-			l = sort(interpreter,scope,l,func).data;
-		}
-		if(r.size()>1){
-			r = sort(interpreter,scope,r,func).data;
-		}
-		
+		l = sort(interpreter,scope,l,func).data;
+		r = sort(interpreter,scope,r,func).data;
+
 		l.push(p);
 		l.addAll(r);
 		return new VarStack(l);

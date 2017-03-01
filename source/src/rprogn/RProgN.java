@@ -22,9 +22,7 @@ public class RProgN {
 		for (int i=1; i<args.length; i++){
 			String arg = args[i];
 			if(arg.length()>2 && arg.substring(0, 2).equals("--")){
-				for(String s : arg.substring(3).split("")){
-					Flags.SetFlag(s);
-				}
+				Flags.SetFlag(arg.substring(2));
 			}else{
 				if (arg.matches("^'.*'$")){
 					interpreter.reg.push(new VarString(arg.substring(1,arg.length()-1)));

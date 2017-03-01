@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Stack;
 
+import rprogn.Explain;
+import rprogn.Flags;
 import rprogn.compiler.Compiler;
 import rprogn.compiler.concept.Concept;
 import rprogn.variable.Var;
@@ -32,6 +34,9 @@ public class Interpreter {
 	public void execute(String string){
 		Concept[] concepts = Compiler.compile(string);
 		try{
+			if(Flags.FlagToggled("d")){
+				System.err.print(Explain.explain(concepts));
+			}
 			Parser.parse(concepts,this);
 		}catch(Exception e){
 			System.err.println(e.toString());

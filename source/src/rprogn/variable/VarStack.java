@@ -24,4 +24,8 @@ public class VarStack extends Var {
 		}
 		return s + "}";
 	}
+	
+	public String type(){
+		return "stack";
+	}
 }

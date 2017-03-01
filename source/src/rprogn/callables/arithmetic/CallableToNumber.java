@@ -15,8 +15,7 @@ public class CallableToNumber implements Callable {
 
 	@Override
 	public String describe() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Convert a Variable to a Number.";
 	}
 
 }

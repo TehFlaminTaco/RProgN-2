@@ -17,4 +17,8 @@ public class Var {
 	public boolean truthy(){
 		return false;
 	}
+	
+	public String type(){
+		return "unknown";
+	}
 }

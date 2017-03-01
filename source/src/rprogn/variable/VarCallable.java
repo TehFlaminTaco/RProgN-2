@@ -44,4 +44,8 @@ public class VarCallable extends Var implements Callable {
 		return data!=null || otherDat!=null;
 	}
 	
+	public String type(){
+		return "function";
+	}
+	
 }
