@@ -24,6 +24,16 @@ public class VarCallable extends Var implements Callable {
 	}
 	
 	public String toString(){
+		if(otherDat!=null){
+			return otherDat.describe();
+		}
+		if(data!=null){
+			String s = "{";
+			for (Concept c : data){
+				s += c.toString();
+			}
+			return s + "}";
+		}
 		return "[FUNCTION]";
 	}
 	
