@@ -22,15 +22,13 @@ public class CallableIf implements Callable {
 			func_b = null;
 		}
 		
-		if(val!=null){
-			if(val.truthy()){
-				if(func_a!=null){
-					func_a.getCallable().Call(interpreter, scope);
-				}
-			}else{
-				if(func_b!=null){
-					func_b.getCallable().Call(interpreter, scope);
-				}
+		if(val!=null&&val.truthy()){
+			if(func_a!=null){
+				func_a.getCallable().Call(interpreter, scope);
+			}
+		}else{
+			if(func_b!=null){
+				func_b.getCallable().Call(interpreter, scope);
 			}
 		}
 		

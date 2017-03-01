@@ -8,7 +8,9 @@ public class CallableDuplicate implements Callable {
 
 	@Override
 	public int Call(Interpreter interpreter, Scope scope) {
-		interpreter.reg.push(interpreter.reg.peek());
+		if(!interpreter.reg.isEmpty()){
+			interpreter.reg.push(interpreter.reg.peek());
+		}
 		return -1;
 	}
 

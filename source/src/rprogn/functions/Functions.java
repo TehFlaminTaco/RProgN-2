@@ -14,6 +14,7 @@ import rprogn.callables.logic.*;
 import rprogn.callables.misc.*;
 import rprogn.callables.reg.*;
 import rprogn.callables.stack.*;
+import rprogn.callables.string.*;
 import rprogn.variable.VarCallable;
 import rprogn.variable.VarNumber;
 import rprogn.variable.VarString;
@@ -71,6 +72,10 @@ public class Functions {
 		newDefault(new CallablePush(), "push", "’");
 		newDefault(new CallablePop(), "pop", "‘");
 		newDefault(new CallableSort(), "sort","§");
+		
+		// Strings
+		newDefault(new CallableReplace(), "replace", "r");
+		newDefault(new CallableInverse(), "inverse", "i");
 		
 		// Misc
 		newDefault(new CallableCall(), "call","C");

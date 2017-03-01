@@ -3,8 +3,10 @@ package rprogn.callables.misc;
 import rprogn.callables.Callable;
 import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
+import rprogn.interpreter.Parser;
 import rprogn.variable.Var;
 import rprogn.variable.VarCallable;
+import rprogn.compiler.Compiler;
 
 public class CallableCall implements Callable {
 
@@ -15,7 +17,8 @@ public class CallableCall implements Callable {
 			return func.getCallable().Call(interpreter, scope);
 		}
 		if(func!=null){
-			interpreter.execute(func.toString());
+			Parser.parse(Compiler.compile(func.toString()),interpreter,scope.functions);
+			
 		}
 		return -1;
 	}
