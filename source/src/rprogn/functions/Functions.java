@@ -62,6 +62,7 @@ public class Functions {
 		newDefault(new CallableIf(), "if", "?");
 		newDefault(new CallableWhile(), "while", ":");
 		newDefault(new CallableFor(), "for", ";");
+		newDefault(new CallableSatisfy(), "é");
 		
 		// Stacks
 		newDefault(new CallableNewStack(), "stack", "s");
@@ -76,6 +77,7 @@ public class Functions {
 		// Strings
 		newDefault(new CallableReplace(), "replace", "r");
 		newDefault(new CallableInverse(), "inverse", "i");
+		newDefault(new CallableFormat(), "format", "F");
 		
 		// Misc
 		newDefault(new CallableCall(), "call","C");

@@ -41,7 +41,7 @@ public class VarCallable extends Var implements Callable {
 	}
 	
 	public boolean truthy(){
-		return data!=null || otherDat!=null;
+		return true;
 	}
 	
 	public String type(){

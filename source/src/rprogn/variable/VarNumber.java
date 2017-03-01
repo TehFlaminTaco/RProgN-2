@@ -18,7 +18,11 @@ public class VarNumber extends Var {
 	}
 	
 	public VarNumber(String data){
-		this.data = new BigDecimal(data);
+		try{
+			this.data = new BigDecimal(data);
+		}catch (Exception e){
+			
+		}
 	}
 	
 	public VarNumber(Var var) {
