@@ -3,6 +3,8 @@ package rprogn.callables;
 import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
 import rprogn.variable.Var;
+import rprogn.variable.VarNumber;
+import rprogn.variable.VarString;
 
 public class CallablePushVar implements Callable {
 	
@@ -10,6 +12,14 @@ public class CallablePushVar implements Callable {
 
 	public CallablePushVar(Var data){
 		this.data = data;
+	}
+	
+	public CallablePushVar(String str){
+		this.data = new VarString(str);
+	}
+	
+	public CallablePushVar(double d){
+		this.data = new VarNumber(d);
 	}
 	
 	@Override

@@ -49,7 +49,10 @@ public class CallableConcat implements Callable {
 	}
 	
 	public Var concat(Var a, Var b){
-		if(a instanceof VarCallable || b instanceof VarCallable){
+		
+		if(a instanceof VarString || b instanceof VarString){
+			return new VarString(a.toString() + b.toString());
+		}else if(a instanceof VarCallable || b instanceof VarCallable){
 			return new VarCallable(new CallableTacted(b.getCallable(),a.getCallable()));
 		}
 		

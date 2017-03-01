@@ -9,6 +9,7 @@ import rprogn.interpreter.Parser;
 public class VarCallable extends Var implements Callable {
 	public Concept[] data;
 	public Callable otherDat;
+	public boolean braced = true;
 	
 	public VarCallable(Concept[] init){
 		data = init;
@@ -28,11 +29,11 @@ public class VarCallable extends Var implements Callable {
 			return otherDat.describe();
 		}
 		if(data!=null){
-			String s = "{";
+			String s = braced ? "{" : "";
 			for (Concept c : data){
 				s += c.toString();
 			}
-			return s + "}";
+			return s + (braced ? "}" : "");
 		}
 		return "[FUNCTION]";
 	}

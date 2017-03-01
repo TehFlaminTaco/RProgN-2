@@ -36,7 +36,7 @@ public class Compiler {
 				}
 				int skip = input.indexOf(subString, i+1);
 				if(mode==MODE_ZSS){
-					pushConceptFromWord(input.substring(i+1,skip),MODE_STRING,c);
+					pushConceptFromWord(input.substring(i,skip+1),MODE_GENERAL,c); // Not using a MODE_STRING here allows the concept stack to see its raw, which is useful for debugging.
 				}else{
 					builtWord+=input.substring(i+1,skip);
 				}

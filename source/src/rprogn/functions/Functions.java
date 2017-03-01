@@ -9,12 +9,14 @@ import rprogn.callables.CallablePushVar;
 import rprogn.callables.CallableWrite;
 import rprogn.callables.arithmetic.*;
 import rprogn.callables.bitwiseoperations.*;
+import rprogn.callables.constants.CallablePushSource;
 import rprogn.callables.flow.*;
 import rprogn.callables.logic.*;
 import rprogn.callables.misc.*;
 import rprogn.callables.reg.*;
 import rprogn.callables.stack.*;
 import rprogn.callables.string.*;
+import rprogn.variable.Var;
 import rprogn.variable.VarCallable;
 import rprogn.variable.VarNumber;
 import rprogn.variable.VarString;
@@ -84,6 +86,15 @@ public class Functions {
 		newDefault(new CallableAsoc(), "asoc","=");
 		newDefault(new CallableLocalAsoc(), "@");
 		newDefault(new CallableLen(), "len", "L");
+		
+		// Constants
+		newDefault(new CallablePushSource(), "q");
+		newDefault("x", "x");
+		newDefault("y", "y");
+		newDefault("z", "z");
+		newDefault("X", "X");
+		newDefault("Y", "Y");
+		newDefault("Z", "Z");
 	}
 	
 	
@@ -132,11 +143,27 @@ public class Functions {
 			return new VarNumber(func.substring(1)).getCallable();
 		}
 		
+		if(func.matches("^([\"']).*\\1$")){
+			return new VarString(func.substring(1,func.length()-1)).getCallable();
+		}
+		
 		if(Flags.FlagToggled("z")){
 			
 		}
 		
 		return null;
+	}
+	
+	public static void newDefault(Var var, String... name){
+		newDefault(new CallablePushVar(var),name);
+	}
+	
+	public static void newDefault(String var, String... name){
+		newDefault(new CallablePushVar(var),name);
+	}
+	
+	public static void newDefault(double var, String... name){
+		newDefault(new CallablePushVar(var),name);
 	}
 	
 	public static void newDefault(Callable call, String... name){
