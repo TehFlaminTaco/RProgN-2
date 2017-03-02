@@ -15,7 +15,6 @@ public class RProgN {
 		Functions.setDefaults();
 		
 		Flags.SetFlag("z");
-		
 		String target=args[0];
 		
 		interpreter = new Interpreter();

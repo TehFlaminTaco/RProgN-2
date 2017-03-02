@@ -15,8 +15,12 @@ public class Compiler {
 	public static final int MODE_ZSS = 2;
 	
 	public static Concept[] compile(String input){
+		return compile(input, Flags.FlagToggled("z"));
+	}
+	
+	public static Concept[] compile(String input, boolean zss){
 		Stack<Concept> c = new Stack<Concept>();
-		int mode = Flags.FlagToggled("z") ? MODE_ZSS : MODE_GENERAL; // Mode identifies if we're in a string or whatever.
+		int mode = zss ? MODE_ZSS : MODE_GENERAL; // Mode identifies if we're in a string or whatever.
 		String builtWord = new String();
 		String[] strings = input.split("");
 		int i=0;
@@ -26,7 +30,7 @@ public class Compiler {
 			// End a word.
 			if(subString.matches("\\s")){ // If we finish the word, we push it to the concept stack.
 				pushConceptFromWord(builtWord,mode,c);
-				mode=Flags.FlagToggled("z") ? MODE_ZSS : MODE_GENERAL;
+				mode=zss ? MODE_ZSS : MODE_GENERAL;
 				builtWord = new String();
 				
 			// Pair Quotes, and make it assume string if General.

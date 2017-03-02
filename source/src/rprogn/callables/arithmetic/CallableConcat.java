@@ -16,14 +16,7 @@ public class CallableConcat implements Callable {
 		Var b = interpreter.pop();
 		Var a = interpreter.pop();
 		
-		if(a==null){
-			interpreter.reg.push(b);
-			return -1;
-		}
-		if(b==null){
-			interpreter.reg.push(a);
-			return -1;
-		}
+		if(a==null && b==null){return -1;}
 		
 		if(b instanceof VarStack || a instanceof VarStack){
 			Var stepper=null;
@@ -55,7 +48,8 @@ public class CallableConcat implements Callable {
 		}else if(a instanceof VarCallable || b instanceof VarCallable){
 			return new VarCallable(new CallableTacted(b.getCallable(),a.getCallable()));
 		}
-		
+		if(a==null){return b;}
+		if(b==null){return a;}
 		String str = a.toString() + b.toString();
 		return new VarString(str);
 	}

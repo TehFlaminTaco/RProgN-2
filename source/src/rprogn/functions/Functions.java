@@ -9,7 +9,7 @@ import rprogn.callables.CallablePushVar;
 import rprogn.callables.CallableWrite;
 import rprogn.callables.arithmetic.*;
 import rprogn.callables.bitwiseoperations.*;
-import rprogn.callables.constants.CallablePushSource;
+import rprogn.callables.constants.*;
 import rprogn.callables.flow.*;
 import rprogn.callables.logic.*;
 import rprogn.callables.misc.*;
@@ -80,6 +80,8 @@ public class Functions {
 		newDefault(new CallableReplace(), "replace", "r");
 		newDefault(new CallableInverse(), "inverse", "i");
 		newDefault(new CallableFormat(), "format", "F");
+		newDefault(new CallableChar(), "char", "c");
+		newDefault(new CallableOrd(), "ord", "o");
 		
 		// Misc
 		newDefault(new CallableCall(), "call","C");
@@ -89,12 +91,14 @@ public class Functions {
 		
 		// Constants
 		newDefault(new CallablePushSource(), "q");
+		newDefault(new CallablePushReg(), "ý");
 		newDefault("x", "x");
 		newDefault("y", "y");
 		newDefault("z", "z");
 		newDefault("X", "X");
 		newDefault("Y", "Y");
 		newDefault("Z", "Z");
+		newDefault(10, "°");
 	}
 	
 	
