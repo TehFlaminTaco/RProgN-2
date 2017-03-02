@@ -29,7 +29,7 @@ public class CallableReplace implements Callable {
 					func.Call(interpreter, scope);
 					Var popped = interpreter.pop();
 					if (popped!=null){
-						newStack.data.push(popped);
+						newStack.data.insertElementAt(popped,0);
 					}
 				}
 				interpreter.reg.push(newStack);
