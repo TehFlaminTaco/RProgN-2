@@ -29,12 +29,12 @@ public class ByteTable {
 			table_string += "|"+rep(" ",(int)Math.ceil((cell_width-2)/2))+String.format("%h", i)+"_"+rep(" ",(int)Math.floor((cell_width-2)/2));
 			for(int c=0; c<16; c++){
 				table_string += "|"+rep(" ",(int)Math.ceil((cell_width-1)/2))
-								   +(i<2 ? "" : String.valueOf((char)(i*16+c)))
+								   +fromChar((char)(i*16+c))
 								   +rep(" ",(int)Math.floor((cell_width-1)/2)+1);
 			}
 			table_string += "|\n|"+rep(" ",cell_width)+"|";
 			for(int c=0; c<16; c++){
-				Callable call = funcs.get(String.valueOf((char)(i*16+c)));
+				Callable call = funcs.get(fromChar((char)(i*16+c)));
 				String name = "null";
 				if(call!=null){
 					name = call.getClass().toString();
@@ -60,5 +60,15 @@ public class ByteTable {
 			o+=s;
 		}
 		return o;
+	}
+	
+	public static String fromChar(char n){
+		if (n < (16*2)){
+			return "";
+		}
+		if (n >= (16*8) && n < (16*10)){
+			return String.valueOf(("€ ‚ƒ„…†‡ˆ‰Š‹Œ Ž  ‘’“”•–—˜™š›œ žŸ").charAt((int)n-(16*8)));
+		}
+		return String.valueOf(n);
 	}
 }
