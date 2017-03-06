@@ -33,6 +33,10 @@ public class RProgN {
 			}
 		}
 		
+		if(Flags.FlagToggled("b")){
+			System.err.println(ByteTable.GetUsedBytes());
+		}
+		
 		if(target==null){
 			System.err.println("Could not run no code!");
 		}

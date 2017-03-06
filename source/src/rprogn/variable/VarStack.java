@@ -1,5 +1,6 @@
 package rprogn.variable;
 
+import java.util.List;
 import java.util.Stack;
 
 public class VarStack extends Var {
@@ -11,6 +12,14 @@ public class VarStack extends Var {
 	
 	public VarStack(Stack<Var> data){
 		this.data = data;
+	}
+	
+	public VarStack(List<Var> data){
+		Stack<Var> stack = new Stack<Var>();
+		for(int i=0; i<data.size(); i++){
+			stack.push(data.get(i));
+		}
+		this.data = stack;
 	}
 	
 	public boolean truthy(){

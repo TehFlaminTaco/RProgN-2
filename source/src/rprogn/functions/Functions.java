@@ -82,6 +82,11 @@ public class Functions {
 		newDefault(new CallableFormat(), "format", "F");
 		newDefault(new CallableChar(), "char", "c");
 		newDefault(new CallableOrd(), "ord", "o");
+		newDefault(new CallableBase(), "base", "B");
+		newDefault(new CallableSub(), "sub", "ü");
+		newDefault(new CallableHead(), "head", "ù");
+		newDefault(new CallableTail(), "tail", "ú");
+		newDefault(new CallableSplit(), "split", "û");
 		
 		// Misc
 		newDefault(new CallableCall(), "call","C");
@@ -132,6 +137,10 @@ public class Functions {
 		
 		if(func.matches(".*\\d.*") && func.matches("^-?[\\d.]+$")){
 			return new VarNumber(func).getCallable();
+		}
+		
+		if(func.length()==0){
+			return null;
 		}
 		
 		if(func.substring(0,1).equals("`")){
