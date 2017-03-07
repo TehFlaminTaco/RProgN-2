@@ -20,18 +20,16 @@ public class Parser {
 		scope.concepts = concepts;
 		scope.functions = new Functions();
 		scope.functions.parent = parentFuncs;
-		for(int i=0; i<concepts.length; i++){
-			scope.iPointer = i;
-			Concept concept = concepts[i];
+		for(scope.iPointer=0; scope.iPointer<concepts.length; scope.iPointer++){
+			Concept concept = concepts[scope.iPointer];
 			if(concept instanceof ConceptFunction){
 				Callable func = scope.functions.get(((ConceptFunction) concept).func);
 				
 				if(func!=null){
 					try{
 						func.Call(interpreter,scope);
-						i=scope.iPointer;
 					}catch(Exception e){
-						System.err.println("ERROR AT WORD "+(i+1)+" \""+concepts[i].toString()+"\"\n"+e.toString());
+						System.err.println("ERROR AT WORD "+(scope.iPointer+1)+" \""+concepts[scope.iPointer].toString()+"\"\n"+e.toString());
 						if(Flags.FlagToggled("e"))
 							e.printStackTrace();
 					}
