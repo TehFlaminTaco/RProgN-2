@@ -33,14 +33,14 @@ public class CallableSub implements Callable {
 		if (c instanceof VarString){
 			VarString str = (VarString) c;
 			
-			interpreter.reg.push(new VarString(str.data.substring(start.data.intValue(), end.data.intValue())));
+			interpreter.push(new VarString(str.data.substring(start.data.intValue(), end.data.intValue())));
 		}
 		if (c instanceof VarStack){
 			VarStack stack = (VarStack) c;
 			
-			interpreter.reg.push(
+			interpreter.push(
 					new VarStack(
-							stack.data.subList(start.data.intValue(), end.data.intValue())
+							stack.subList(start.data.intValue(), end.data.intValue())
 							));
 		}
 		

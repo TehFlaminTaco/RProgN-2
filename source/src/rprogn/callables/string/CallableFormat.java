@@ -35,7 +35,7 @@ public class CallableFormat implements Callable {
 		}
 		Var[] argV = new Var[args.size()];
 		argV = args.toArray(argV);
-		interpreter.reg.push(new VarString(format(form, argV)));
+		interpreter.push(new VarString(format(form, argV)));
 		
 	}
 

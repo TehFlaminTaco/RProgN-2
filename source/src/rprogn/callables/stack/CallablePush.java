@@ -19,7 +19,7 @@ public class CallablePush implements Callable {
 		}
 		if(a instanceof VarStack){
 			VarStack stack = (VarStack) a;
-			stack.data.push(b);
+			stack.push(b);
 		}
 	}
 

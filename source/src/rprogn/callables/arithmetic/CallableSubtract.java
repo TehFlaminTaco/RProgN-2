@@ -14,7 +14,7 @@ public class CallableSubtract implements Callable {
 		Var b = interpreter.pop();
 		
 		if(a instanceof VarNumber && b instanceof VarNumber){
-			interpreter.reg.push(new VarNumber(((VarNumber)b).data.subtract(((VarNumber)a).data)));
+			interpreter.push(new VarNumber(((VarNumber)b).data.subtract(((VarNumber)a).data)));
 		}
 		
 	}

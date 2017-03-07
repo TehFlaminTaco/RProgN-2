@@ -31,25 +31,25 @@ public class CallableRange implements Callable {
 					BigDecimal b = ((VarNumber) varb).data.min(((VarNumber) vart).data);
 					
 					for (BigDecimal i = b; i.compareTo(a)<=0; i=i.add(BigDecimal.ONE)){
-						newStack.data.push(new VarNumber(i));
+						newStack.push(new VarNumber(i));
 					}
 					if ((int) ((VarNumber) varb).data.compareTo(b)==0){
 						VarStack reverseStack = new VarStack();
-						while (!newStack.data.isEmpty()){
-							reverseStack.data.push(newStack.data.pop());
+						while (!newStack.isEmpty()){
+							reverseStack.push(newStack.pop());
 						}
 						newStack = reverseStack;
 					}
-					interpreter.reg.push(newStack);
+					interpreter.push(newStack);
 				}
 				if(varb instanceof VarString && varb.truthy() && vart instanceof VarString && vart.truthy()){ // Strings are truthy if they have more than 1 char, very useful here.
 					VarStack newStack = new VarStack();
 					int a = Math.min((int) ((VarString) varb).data.charAt(0), (int) ((VarString) vart).data.charAt(0));
 					int b = Math.max((int) ((VarString) varb).data.charAt(0), (int) ((VarString) vart).data.charAt(0));
 					for (int i = a; i <= b; i++){
-						newStack.data.push(new VarString(String.valueOf((char) i)));
+						newStack.push(new VarString(String.valueOf((char) i)));
 					}
-					interpreter.reg.push(newStack);
+					interpreter.push(newStack);
 				}
 			}
 		}

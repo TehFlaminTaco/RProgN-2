@@ -13,8 +13,8 @@ public class CallablePop implements Callable {
 		Var a = interpreter.pop();
 		if (a instanceof VarStack){
 			VarStack stack = (VarStack) a;
-			if(!stack.data.isEmpty()){
-				interpreter.reg.push(stack.data.pop());
+			if(!stack.isEmpty()){
+				interpreter.push(stack.pop());
 			}
 		}
 	}

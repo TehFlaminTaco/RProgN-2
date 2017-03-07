@@ -13,10 +13,10 @@ public class CallableRegSwap implements Callable {
 		Var b = interpreter.pop();
 		
 		if(a!=null){
-			interpreter.reg.push(a);
+			interpreter.push(a);
 		}
 		if(b!=null){
-			interpreter.reg.push(b);
+			interpreter.push(b);
 		}
 	}
 

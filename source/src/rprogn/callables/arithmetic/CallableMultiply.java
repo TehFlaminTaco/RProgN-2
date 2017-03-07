@@ -18,18 +18,18 @@ public class CallableMultiply implements Callable {
 		Var b = interpreter.pop();
 		
 		if(a instanceof VarString && b instanceof VarNumber){
-			interpreter.reg.push(((VarString)a).repeat(((VarNumber)b).data));
+			interpreter.push(((VarString)a).repeat(((VarNumber)b).data));
 			return;
 		}
 		
 		if(b instanceof VarString && a instanceof VarNumber){
-			interpreter.reg.push(((VarString)b).repeat(((VarNumber)a).data));
+			interpreter.push(((VarString)b).repeat(((VarNumber)a).data));
 			return;
 		}
 		
 		
 		if(a instanceof VarNumber && b instanceof VarNumber){
-			interpreter.reg.push(new VarNumber(((VarNumber)b).data.multiply(((VarNumber)a).data)));
+			interpreter.push(new VarNumber(((VarNumber)b).data.multiply(((VarNumber)a).data)));
 			return;
 		}
 		

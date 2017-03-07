@@ -7,26 +7,32 @@ import rprogn.variable.Var;
 import rprogn.variable.VarStack;
 import rprogn.variable.VarString;
 
-public class CallableInverse implements Callable {
+public class CallableLower implements Callable {
 
 	@Override
 	public void Call(Interpreter interpreter, Scope scope) {
 		Var var = interpreter.pop();
-		if (var instanceof VarStack){
+		
+		if(var instanceof VarString){
+			interpreter.push(((VarString)var).data.toLowerCase());
+		}
+		if(var instanceof VarStack){
 			VarStack newStack = new VarStack();
 			VarStack stack = (VarStack) var;
-			for(int i = stack.size()-1; i>=0; i--){
-				newStack.push(stack.get(i));
+			for(int i=0; i<stack.size(); i++){
+				Var tmp = stack.get(i);
+				if(tmp instanceof VarString){
+					VarString str = (VarString) tmp;
+					newStack.push(str.data.toLowerCase());
+				}
 			}
 			interpreter.push(newStack);
-		}else if(var != null){
-			interpreter.push(new VarString(new StringBuilder(var.toString()).reverse().toString()));
 		}
 	}
 
 	@Override
 	public String describe() {
-		return "Get the inverse of a variable";
+		return "Convert a string to Lowercase.";
 	}
 
 }

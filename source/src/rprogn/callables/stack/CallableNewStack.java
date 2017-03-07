@@ -9,7 +9,7 @@ public class CallableNewStack implements Callable {
 
 	@Override
 	public void Call(Interpreter interpreter, Scope scope) {
-		interpreter.reg.push(new VarStack());
+		interpreter.push(new VarStack());
 	}
 
 	@Override

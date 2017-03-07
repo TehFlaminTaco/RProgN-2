@@ -25,18 +25,18 @@ public class CallableConcat implements Callable {
 				b = a;
 			}
 			VarStack stack = (VarStack) b;
-			if (stack.data.size()>0){
-				Var o = stack.data.get(0);
-				for(int i = 1; i < stack.data.size(); i++){
+			if (stack.size()>0){
+				Var o = stack.get(0);
+				for(int i = 1; i < stack.size(); i++){
 					if(stepper!=null){
 						o = concat(o, stepper);
 					}
-					o = concat(o, stack.data.get(i));
+					o = concat(o, stack.get(i));
 				}
-				interpreter.reg.push(o);
+				interpreter.push(o);
 			}
 		}else{
-			interpreter.reg.push(concat(a,b));
+			interpreter.push(concat(a,b));
 		}
 	}
 	

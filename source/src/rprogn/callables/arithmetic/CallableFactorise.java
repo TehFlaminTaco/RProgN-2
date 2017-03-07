@@ -50,7 +50,7 @@ public class CallableFactorise implements Callable {
 					}
 				}
 			}
-			interpreter.reg.push(CallableSort.sort(interpreter, scope, factors));
+			interpreter.push((Var)CallableSort.sort(interpreter, scope, factors));
 		}
 	}
 

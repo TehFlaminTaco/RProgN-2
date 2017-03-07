@@ -3,22 +3,17 @@ package rprogn.variable;
 import rprogn.callables.Callable;
 import rprogn.callables.CallablePushVar;
 
-public class Var {
+public interface Var {
 
-	public Callable getCallable() {
+	public default Callable getCallable() {
 		return new CallablePushVar(this);
 	}
 	
-	public String toString(){
-		return "nil";
-	}
-
-	
-	public boolean truthy(){
+	public default boolean truthy(){
 		return false;
 	}
 	
-	public String type(){
+	public default String type(){
 		return "unknown";
 	}
 }

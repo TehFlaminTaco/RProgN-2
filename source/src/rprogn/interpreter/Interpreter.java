@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Stack;
 
 import rprogn.Explain;
@@ -11,6 +13,9 @@ import rprogn.Flags;
 import rprogn.compiler.Compiler;
 import rprogn.compiler.concept.Concept;
 import rprogn.variable.Var;
+import rprogn.variable.VarNumber;
+import rprogn.variable.VarStack;
+import rprogn.variable.VarString;
 
 public class Interpreter {
 	public Stack<Var> reg;
@@ -45,6 +50,34 @@ public class Interpreter {
 	
 	public Var pop(){
 		return reg.isEmpty() ? null : reg.pop();
+	}
+	
+	public void push(Var var){
+		reg.push(var);
+	}
+	
+	public void push(String str){
+		reg.push(new VarString(str));
+	}
+	
+	public void push(double n){
+		reg.push(new VarNumber(n));
+	}
+	
+	public void push(BigDecimal n){
+		reg.push(new VarNumber(n));
+	}
+	
+	public void push(BigInteger n){
+		reg.push(new VarNumber(new BigDecimal(n)));
+	}
+	
+	public void push(Stack<Var> stack){
+		reg.push(new VarStack(stack));
+	}
+	
+	public void push(VarStack vStack){
+		reg.push(vStack);
 	}
 	
 }

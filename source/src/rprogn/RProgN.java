@@ -24,11 +24,11 @@ public class RProgN {
 				Flags.SetFlag(arg.substring(2));
 			}else{
 				if (arg.matches("^'.*'$")){
-					interpreter.reg.push(new VarString(arg.substring(1,arg.length()-1)));
+					interpreter.push(new VarString(arg.substring(1,arg.length()-1)));
 				}else if(arg.matches("(-?\\d+(\\.\\d*)?|(-?\\d+)?.\\d+)")){
-					interpreter.reg.push(new VarNumber(arg));
+					interpreter.push(new VarNumber(arg));
 				}else{
-					interpreter.reg.push(new VarString(arg));
+					interpreter.push(new VarString(arg));
 				}
 			}
 		}

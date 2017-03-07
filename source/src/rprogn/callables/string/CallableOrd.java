@@ -17,18 +17,18 @@ public class CallableOrd implements Callable {
 		Var s = interpreter.reg.pop();
 		if (s instanceof VarNumber){
 			BigDecimal chr = ((VarNumber)s).data;
-			interpreter.reg.push(new VarString(String.valueOf((char)chr.intValue())));
+			interpreter.push(new VarString(String.valueOf((char)chr.intValue())));
 		}else if(s instanceof VarStack){
 			VarStack stack = (VarStack) s;
 			VarStack newStack = new VarStack();
-			for(int i=0; i < stack.data.size(); i++){
-				Var sub = stack.data.get(i);
+			for(int i=0; i < stack.size(); i++){
+				Var sub = stack.get(i);
 				if(sub instanceof VarNumber){
 					BigDecimal chr = ((VarNumber)sub).data;
-					newStack.data.push(new VarString(String.valueOf((char)chr.intValue())));
+					newStack.push(new VarString(String.valueOf((char)chr.intValue())));
 				}
 			}
-			interpreter.reg.push(newStack);
+			interpreter.push(newStack);
 		}
 	}
 

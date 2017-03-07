@@ -16,7 +16,7 @@ public class CallableSplit implements Callable {
 		
 		if(!(b instanceof VarString)){
 			if(b!=null){
-				interpreter.reg.push(b);
+				interpreter.push(b);
 			}
 			b = a;
 			a = new VarString("\\s");
@@ -32,10 +32,10 @@ public class CallableSplit implements Callable {
 		
 		String[] split = sB.data.split(sA.data);
 		for(int i=0; i<split.length;i++){
-			stack.data.push(new VarString(split[i]));
+			stack.push(new VarString(split[i]));
 		}
 		
-		interpreter.reg.push(stack);
+		interpreter.push(stack);
 		
 	}
 

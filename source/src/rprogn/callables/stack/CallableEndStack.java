@@ -17,7 +17,7 @@ public class CallableEndStack implements Callable {
 		}else{
 			interpreter.reg = new Stack<Var>();
 		}
-		interpreter.reg.push(newStack);
+		interpreter.push(newStack);
 	}
 
 	@Override

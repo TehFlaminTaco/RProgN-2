@@ -18,11 +18,11 @@ public class CallableSatisfy implements Callable {
 		
 		BigDecimal n=BigDecimal.ZERO;
 		while(true){
-			interpreter.reg.push(new VarNumber(n));
+			interpreter.push(new VarNumber(n));
 			func.Call(interpreter, scope);
 			Var popped = interpreter.pop();
 			if(popped!=null && popped.truthy()){
-				interpreter.reg.push(new VarNumber(n));
+				interpreter.push(new VarNumber(n));
 				break;
 			}
 			n=n.add(BigDecimal.ONE);

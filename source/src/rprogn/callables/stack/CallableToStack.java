@@ -18,9 +18,9 @@ public class CallableToStack implements Callable {
 			VarStack newStack = new VarStack();
 			VarString varStr = (VarString) var;
 			for (int i=0; i<varStr.data.length(); i++){
-				newStack.data.push(new VarString(String.valueOf(varStr.data.charAt(i))));
+				newStack.push(new VarString(String.valueOf(varStr.data.charAt(i))));
 			}
-			interpreter.reg.push(newStack);
+			interpreter.push(newStack);
 		}
 		if(var instanceof VarNumber){
 			VarNumber varNum = (VarNumber) var;
@@ -28,23 +28,23 @@ public class CallableToStack implements Callable {
 			Var func = interpreter.pop();
 			if(func instanceof VarCallable){
 				for (int i = 1; i <= varNum.data.intValue(); i++){
-					interpreter.reg.push(new VarNumber(i));
+					interpreter.push(new VarNumber(i));
 					((VarCallable) func).Call(interpreter, scope);
 					if(!interpreter.reg.isEmpty()){
-						newStack.data.push(interpreter.reg.pop());
+						newStack.push(interpreter.reg.pop());
 					}
 				}
 			}else if(func!=null){
-				interpreter.reg.push(var);
+				interpreter.push(var);
 				for (int i = 1; i <= varNum.data.intValue(); i++){
-					newStack.data.push(new VarNumber(i));
+					newStack.push(new VarNumber(i));
 				}
 			}else{
 				for (int i = 1; i <= varNum.data.intValue(); i++){
-					newStack.data.push(new VarNumber(i));
+					newStack.push(new VarNumber(i));
 				}
 			}
-			interpreter.reg.push(newStack);
+			interpreter.push(newStack);
 		}
 		if(var instanceof VarCallable){
 			Var num = interpreter.pop();
@@ -53,13 +53,13 @@ public class CallableToStack implements Callable {
 				VarNumber varNum = (VarNumber) num;
 				VarStack newStack = new VarStack();
 				for (int i = 1; i <= varNum.data.intValue(); i++){
-					interpreter.reg.push(new VarNumber(i));
+					interpreter.push(new VarNumber(i));
 					((VarCallable) func).Call(interpreter, scope);
 					if(!interpreter.reg.isEmpty()){
-						newStack.data.push(interpreter.reg.pop());
+						newStack.push(interpreter.reg.pop());
 					}
 				}
-				interpreter.reg.push(newStack);
+				interpreter.push(newStack);
 			}
 		}
 	}

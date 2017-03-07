@@ -11,7 +11,7 @@ public class CallablePushSource implements Callable {
 	public void Call(Interpreter interpreter, Scope scope) {
 		VarCallable c = new VarCallable(scope.concepts);
 		c.braced = false;
-		interpreter.reg.push(c);
+		interpreter.push(c);
 	}
 
 	@Override

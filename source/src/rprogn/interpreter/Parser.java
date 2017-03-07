@@ -37,7 +37,7 @@ public class Parser {
 					}
 				}
 			}else if(concept instanceof ConceptString){
-				interpreter.reg.push(new VarString(((ConceptString)concept).string));
+				interpreter.push(new VarString(((ConceptString)concept).string));
 			}
 		}
 	}

@@ -20,8 +20,8 @@ public class CallableFor implements Callable {
 			Var key = interpreter.pop();
 			if (key instanceof VarStack){
 				VarStack stack = (VarStack) key;
-				for (int i=0; i < stack.data.size(); i++){
-					interpreter.reg.push(stack.data.get(i));
+				for (int i=0; i < stack.size(); i++){
+					interpreter.push(stack.get(i));
 					funcC.Call(interpreter, scope);
 				}
 				return;
@@ -30,14 +30,14 @@ public class CallableFor implements Callable {
 				Var max = interpreter.pop();
 				Var min = interpreter.pop();
 				if (!(max instanceof VarNumber)){
-					if (min!=null){interpreter.reg.push(min);}
-					if (max!=null){interpreter.reg.push(max);}
+					if (min!=null){interpreter.push(min);}
+					if (max!=null){interpreter.push(max);}
 					min = new VarNumber(1);
 					max = key;
 					key = new VarNumber(1);
 				}
 				if (!(min instanceof VarNumber)){
-					if (min!=null){interpreter.reg.push(min);}
+					if (min!=null){interpreter.push(min);}
 					min = max;
 					max = key;
 					key = new VarNumber(1);
@@ -46,7 +46,7 @@ public class CallableFor implements Callable {
 				VarNumber Nmax = (VarNumber) max;
 				VarNumber Nkey = (VarNumber) key;
 				for (BigDecimal i=Nmin.data; i.compareTo(Nmax.data)<=0; i=i.add(Nkey.data)){
-					interpreter.reg.push(new VarNumber(i));
+					interpreter.push(new VarNumber(i));
 					funcC.Call(interpreter, scope);
 				}
 				

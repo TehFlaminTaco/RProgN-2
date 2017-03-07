@@ -15,17 +15,17 @@ public class CallableChar implements Callable {
 		Var s = interpreter.reg.pop();
 		if (s instanceof VarString){
 			String str = ((VarString)s).data;
-			interpreter.reg.push(new VarNumber((int)str.charAt(0)));
+			interpreter.push(new VarNumber((int)str.charAt(0)));
 		}else if(s instanceof VarStack){
 			VarStack stack = (VarStack) s;
 			VarStack newStack = new VarStack();
-			for(int i=0; i < stack.data.size(); i++){
-				Var sub = stack.data.get(i);
+			for(int i=0; i < stack.size(); i++){
+				Var sub = stack.get(i);
 				if(sub instanceof VarString){
-					newStack.data.push(new VarNumber(((VarString)sub).data.charAt(0)));
+					newStack.push(new VarNumber(((VarString)sub).data.charAt(0)));
 				}
 			}
-			interpreter.reg.push(newStack);
+			interpreter.push((Var)newStack);
 		}
 	}
 

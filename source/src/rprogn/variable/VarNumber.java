@@ -2,7 +2,7 @@ package rprogn.variable;
 
 import java.math.BigDecimal;
 
-public class VarNumber extends Var {
+public class VarNumber implements  Var {
 	public BigDecimal data;
 	
 	public VarNumber(){

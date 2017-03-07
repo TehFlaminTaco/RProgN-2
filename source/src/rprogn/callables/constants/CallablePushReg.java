@@ -9,7 +9,7 @@ public class CallablePushReg implements Callable {
 
 	@Override
 	public void Call(Interpreter interpreter, Scope scope) {
-		interpreter.reg.push(new VarStack(interpreter.reg));
+		interpreter.push(new VarStack(interpreter.reg));
 	}
 
 	@Override

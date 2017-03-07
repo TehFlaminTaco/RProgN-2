@@ -19,11 +19,11 @@ public class CallableSort implements Callable {
 			Var b = interpreter.pop();
 			if (b instanceof VarStack){
 				VarStack stack = (VarStack)b;
-				interpreter.reg.push(sort(interpreter,scope,stack.data,a.getCallable()));
+				interpreter.push(sort(interpreter,scope,stack,a.getCallable()));
 			}
 		}else if(a instanceof VarStack){
 			VarStack stack = (VarStack)a;
-			interpreter.reg.push(sort(interpreter,scope,stack.data));
+			interpreter.push(sort(interpreter,scope,stack));
 		}
 	}
 
@@ -48,8 +48,8 @@ public class CallableSort implements Callable {
 		
 		for(int i=0;i<stack.size();i++){
 			if(i!=pivot){
-				interpreter.reg.push(stack.get(i));
-				interpreter.reg.push(p);
+				interpreter.push(stack.get(i));
+				interpreter.push(p);
 				func.Call(interpreter, scope);
 				Var result = interpreter.pop();
 				if(result!=null){
@@ -62,8 +62,8 @@ public class CallableSort implements Callable {
 			}
 		}
 		
-		l = sort(interpreter,scope,l,func).data;
-		r = sort(interpreter,scope,r,func).data;
+		l = sort(interpreter,scope,l,func);
+		r = sort(interpreter,scope,r,func);
 
 		l.push(p);
 		l.addAll(r);

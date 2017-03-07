@@ -6,7 +6,7 @@ import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
 import rprogn.interpreter.Parser;
 
-public class VarCallable extends Var implements Callable {
+public class VarCallable implements Var, Callable {
 	public Concept[] data;
 	public Callable otherDat;
 	public boolean braced = true;

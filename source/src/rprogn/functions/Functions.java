@@ -89,6 +89,8 @@ public class Functions {
 		newDefault(new CallableHead(), "head", "ù");
 		newDefault(new CallableTail(), "tail", "ú");
 		newDefault(new CallableSplit(), "split", "û");
+		newDefault(new CallableUpper(), "upper", "U");
+		newDefault(new CallableLower(), "lower", "l");
 		
 		// Misc
 		newDefault(new CallableCall(), "call","C");

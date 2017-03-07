@@ -19,12 +19,12 @@ public class CallablePlus implements Callable {
 		
 		if(a instanceof VarStack){
 			VarStack stack = (VarStack) a;
-			if (stack.data.size()>0){
-				Var o = stack.data.get(0);
-				for(int i = 1; i < stack.data.size(); i++){
-					o = add(stack.data.get(i), o);
+			if (stack.size()>0){
+				Var o = stack.get(0);
+				for(int i = 1; i < stack.size(); i++){
+					o = add(stack.get(i), o);
 				}
-				interpreter.reg.push(o);
+				interpreter.push(o);
 			}
 			return;
 		}
@@ -33,20 +33,20 @@ public class CallablePlus implements Callable {
 		
 		if(b instanceof VarStack){
 			if(a!=null){
-				interpreter.reg.push(a);
+				interpreter.push(a);
 				VarStack stack = (VarStack) b;
-				if (stack.data.size()>0){
-					Var o = stack.data.get(0);
-					for(int i = 1; i < stack.data.size(); i++){
-						o = add(stack.data.get(i), o);
+				if (stack.size()>0){
+					Var o = stack.get(0);
+					for(int i = 1; i < stack.size(); i++){
+						o = add(stack.get(i), o);
 					}
-					interpreter.reg.push(o);
+					interpreter.push(o);
 				}
 			}
 		}else{
 			Var o = add(a,b);
 			if (o!=null){
-				interpreter.reg.push(o);
+				interpreter.push(o);
 			}
 		}
 		

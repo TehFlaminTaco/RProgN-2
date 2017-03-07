@@ -24,15 +24,15 @@ public class CallableReplace implements Callable {
 			if (key instanceof VarStack){
 				VarStack stack = (VarStack) key;
 				VarStack newStack = new VarStack();
-				for(int i=stack.data.size()-1; i>=0; i--){
-					interpreter.reg.push(stack.data.get(i));
+				for(int i=0; i<stack.size(); i++){
+					interpreter.push(stack.get(i));
 					func.Call(interpreter, scope);
 					Var popped = interpreter.pop();
 					if (popped!=null){
-						newStack.data.insertElementAt(popped,0);
+						newStack.push(popped);
 					}
 				}
-				interpreter.reg.push(newStack);
+				interpreter.push(newStack);
 			}else{
 				String stKey = key.toString();
 				Var target = interpreter.pop();
@@ -40,13 +40,13 @@ public class CallableReplace implements Callable {
 				if (target instanceof VarStack){
 					VarStack stack = (VarStack) target;
 					VarStack newStack = new VarStack();
-					for(int i=stack.data.size()-1; i>=0; i--){
-						String s = stack.data.get(i).toString();
+					for(int i=stack.size()-1; i>=0; i--){
+						String s = stack.get(i).toString();
 						Pattern p = Pattern.compile(stKey);
 						Matcher m = p.matcher(s);
 						StringBuffer sb = new StringBuffer();
 						while(m.find()){
-							interpreter.reg.push(new VarString(m.group()));
+							interpreter.push(new VarString(m.group()));
 							func.Call(interpreter, scope);
 							Var popped = interpreter.pop();
 							if (popped!=null){
@@ -54,16 +54,16 @@ public class CallableReplace implements Callable {
 							}
 						}
 						m.appendTail(sb);
-						newStack.data.push(new VarString(sb.toString()));
+						newStack.push(new VarString(sb.toString()));
 					}
-					interpreter.reg.push(newStack);
+					interpreter.push(newStack);
 				}else{
 					String s = target.toString();
 					Pattern p = Pattern.compile(stKey);
 					Matcher m = p.matcher(s);
 					StringBuffer sb = new StringBuffer();
 					while(m.find()){
-						interpreter.reg.push(new VarString(m.group()));
+						interpreter.push(new VarString(m.group()));
 						func.Call(interpreter, scope);
 						Var popped = interpreter.pop();
 						if (popped!=null){
@@ -71,7 +71,7 @@ public class CallableReplace implements Callable {
 						}
 					}
 					m.appendTail(sb);
-					interpreter.reg.push(new VarString(sb.toString()));
+					interpreter.push(new VarString(sb.toString()));
 				}
 			}
 		}else{
@@ -79,22 +79,22 @@ public class CallableReplace implements Callable {
 			if(key==null){return;}
 			if(key instanceof VarStack){
 				VarStack newStack = new VarStack();
-				for (int i=0; i<((VarStack)key).data.size(); i++){
-					newStack.data.push(key);
+				for (int i=0; i<((VarStack)key).size(); i++){
+					newStack.push(key);
 				}
-				interpreter.reg.push(newStack);
+				interpreter.push(newStack);
 			}else{
 				Var target = interpreter.pop();
 				if(target==null){return;}
 				if (target instanceof VarStack){
 					VarStack stack = (VarStack) target;
 					VarStack newStack = new VarStack();
-					for (int i=0; i<stack.data.size(); i++){
-						newStack.data.push(new VarString(stack.data.get(i).toString().replaceAll(key.toString(), rplmt.toString())));
+					for (int i=0; i<stack.size(); i++){
+						newStack.push(new VarString(stack.get(i).toString().replaceAll(key.toString(), rplmt.toString())));
 					}
-					interpreter.reg.push(newStack);
+					interpreter.push(newStack);
 				}else{
-					interpreter.reg.push(new VarString(target.toString().replaceAll(key.toString(), rplmt.toString())));
+					interpreter.push(new VarString(target.toString().replaceAll(key.toString(), rplmt.toString())));
 				}
 			}
 		}
