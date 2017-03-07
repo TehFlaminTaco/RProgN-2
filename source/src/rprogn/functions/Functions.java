@@ -42,6 +42,8 @@ public class Functions {
 		newDefault(new CallableConcat(), ".");
 		newDefault(new CallableToNumber(), "n");
 		newDefault(new CallableSqrt(), "š");
+		newDefault(new CallableFactorise(), "ƒ");
+		newDefault(new CallableIsPrime(), "P");
 		
 		// Logical Functions
 		newDefault(new CallableEquals(), "equals", "e");

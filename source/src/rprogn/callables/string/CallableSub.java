@@ -13,7 +13,7 @@ import rprogn.variable.VarString;
 public class CallableSub implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.pop();
 		Var b = interpreter.pop();
 		Var c;
@@ -22,10 +22,10 @@ public class CallableSub implements Callable {
 		}else{
 			c = b;
 			b = a;
-			a = new VarNumber(((VarNumber) a).data.add(new BigDecimal(1)));
+			a = new VarNumber(((VarNumber) a).data.add(BigDecimal.ONE));
 		}
 		
-		if(c==null || !(b instanceof VarNumber) || !(a instanceof VarNumber)){return -1;}
+		if(c==null || !(b instanceof VarNumber) || !(a instanceof VarNumber)){return;}
 		
 		VarNumber start = (VarNumber) b;
 		VarNumber end = (VarNumber) a;
@@ -44,7 +44,6 @@ public class CallableSub implements Callable {
 							));
 		}
 		
-		return -1;
 	}
 
 	@Override

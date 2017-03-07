@@ -16,11 +16,11 @@ public class CallableFormat implements Callable {
 	public static Pattern formatMatches = Pattern.compile("%([sSqQnNiIbBhH])");
 	
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		
 		Var format = interpreter.pop();
 		if(format==null){
-			return -1;
+			return;
 		}
 		
 		String form = format.toString();
@@ -37,7 +37,6 @@ public class CallableFormat implements Callable {
 		argV = args.toArray(argV);
 		interpreter.reg.push(new VarString(format(form, argV)));
 		
-		return -1;
 	}
 
 	@Override

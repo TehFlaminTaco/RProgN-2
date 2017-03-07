@@ -6,9 +6,8 @@ import rprogn.interpreter.Interpreter;
 public class CallablePrint implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		System.out.println(interpreter.reg.isEmpty() ? "null" : interpreter.reg.pop().toString());
-		return -1;
 	}
 
 	@Override

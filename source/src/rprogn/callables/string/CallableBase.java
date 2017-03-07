@@ -13,7 +13,7 @@ import rprogn.variable.VarString;
 public class CallableBase implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var base = interpreter.pop();
 		Var target = interpreter.pop();
 		if (base instanceof VarNumber){
@@ -32,7 +32,6 @@ public class CallableBase implements Callable {
 				}
 			}
 		}
-		return -1;
 	}
 
 	@Override

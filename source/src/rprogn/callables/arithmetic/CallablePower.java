@@ -9,7 +9,7 @@ import rprogn.variable.VarNumber;
 public class CallablePower implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.pop();
 		Var b = interpreter.pop();
 		
@@ -17,7 +17,6 @@ public class CallablePower implements Callable {
 			interpreter.reg.push(new VarNumber(((VarNumber)b).data.pow(((VarNumber)a).data.intValue())));
 		}
 		
-		return -1;
 	}
 
 	@Override

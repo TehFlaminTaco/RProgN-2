@@ -10,7 +10,7 @@ import rprogn.variable.VarString;
 public class CallableInverse implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var var = interpreter.pop();
 		if (var instanceof VarStack){
 			VarStack newStack = new VarStack();
@@ -22,7 +22,6 @@ public class CallableInverse implements Callable {
 		}else if(var != null){
 			interpreter.reg.push(new VarString(new StringBuilder(var.toString()).reverse().toString()));
 		}
-		return -1;
 	}
 
 	@Override

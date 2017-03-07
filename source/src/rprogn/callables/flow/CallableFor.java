@@ -13,7 +13,7 @@ import rprogn.variable.VarStack;
 public class CallableFor implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var func = interpreter.pop();
 		if (func instanceof VarCallable){
 			VarCallable funcC = (VarCallable) func;
@@ -24,7 +24,7 @@ public class CallableFor implements Callable {
 					interpreter.reg.push(stack.data.get(i));
 					funcC.Call(interpreter, scope);
 				}
-				return -1;
+				return;
 			}
 			if (key instanceof VarNumber){
 				Var max = interpreter.pop();
@@ -52,7 +52,6 @@ public class CallableFor implements Callable {
 				
 			}
 		}
-		return -1;
 	}
 
 	@Override

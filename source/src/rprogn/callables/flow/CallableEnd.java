@@ -7,8 +7,8 @@ import rprogn.interpreter.Interpreter;
 public class CallableEnd implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
-		return -1; // Completely removed the old system of flow of control, this is only used in functions.
+	public void Call(Interpreter interpreter, Scope scope) {
+		return; // Completely removed the old system of flow of control, this is only used in functions.
 	}
 
 	@Override

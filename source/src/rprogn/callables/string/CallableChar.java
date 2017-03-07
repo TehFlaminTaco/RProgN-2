@@ -11,7 +11,7 @@ import rprogn.variable.VarString;
 public class CallableChar implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var s = interpreter.reg.pop();
 		if (s instanceof VarString){
 			String str = ((VarString)s).data;
@@ -27,7 +27,6 @@ public class CallableChar implements Callable {
 			}
 			interpreter.reg.push(newStack);
 		}
-		return -1;
 	}
 
 	@Override

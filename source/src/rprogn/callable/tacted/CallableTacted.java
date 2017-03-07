@@ -15,10 +15,9 @@ public class CallableTacted implements Callable {
 	}
 	
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		func_a.Call(interpreter, scope);
 		func_b.Call(interpreter, scope);
-		return -1;
 	}
 
 	@Override

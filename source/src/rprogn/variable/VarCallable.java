@@ -38,13 +38,12 @@ public class VarCallable extends Var implements Callable {
 		return "[FUNCTION]";
 	}
 	
-	public int Call(Interpreter interpreter, Scope scope){
+	public void Call(Interpreter interpreter, Scope scope){
 		if (otherDat==null){
 			Parser.parse(data, interpreter, scope.functions);
 		}else{
 			otherDat.Call(interpreter, scope);
 		}
-		return -1;
 	}
 	
 	public String describe(){

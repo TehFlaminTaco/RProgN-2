@@ -11,7 +11,7 @@ import rprogn.variable.VarString;
 public class CallableTail implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var n = interpreter.pop();
 		Var dat;
 		if (n instanceof VarNumber){
@@ -32,7 +32,6 @@ public class CallableTail implements Callable {
 							stack.data.subList(stack.data.size()-((VarNumber)n).data.intValue(), stack.data.size())
 							));
 		}
-		return -1;
 	}
 
 	@Override

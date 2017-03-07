@@ -14,7 +14,7 @@ import rprogn.variable.VarString;
 public class CallablePlus implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.pop();
 		
 		if(a instanceof VarStack){
@@ -26,7 +26,7 @@ public class CallablePlus implements Callable {
 				}
 				interpreter.reg.push(o);
 			}
-			return -1;
+			return;
 		}
 		
 		Var b = interpreter.pop();
@@ -50,7 +50,6 @@ public class CallablePlus implements Callable {
 			}
 		}
 		
-		return -1;
 	}
 	
 	public Var add(Var a, Var b){

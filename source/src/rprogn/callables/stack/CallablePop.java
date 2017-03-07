@@ -9,7 +9,7 @@ import rprogn.variable.VarStack;
 public class CallablePop implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.pop();
 		if (a instanceof VarStack){
 			VarStack stack = (VarStack) a;
@@ -17,7 +17,6 @@ public class CallablePop implements Callable {
 				interpreter.reg.push(stack.data.pop());
 			}
 		}
-		return -1;
 	}
 
 	@Override

@@ -8,7 +8,7 @@ import rprogn.variable.Var;
 public class CallableRegSwap implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.pop();
 		Var b = interpreter.pop();
 		
@@ -18,7 +18,6 @@ public class CallableRegSwap implements Callable {
 		if(b!=null){
 			interpreter.reg.push(b);
 		}
-		return -1;
 	}
 
 	@Override

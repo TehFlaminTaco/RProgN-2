@@ -10,7 +10,7 @@ import rprogn.variable.VarString;
 public class CallableSplit implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.pop();
 		Var b = interpreter.pop();
 		
@@ -22,7 +22,7 @@ public class CallableSplit implements Callable {
 			a = new VarString("\\s");
 		}
 		if (!(a instanceof VarString) || !(b instanceof VarString)){
-			return -1;
+			return;
 		}
 		
 		VarString sA = (VarString)a;
@@ -37,7 +37,6 @@ public class CallableSplit implements Callable {
 		
 		interpreter.reg.push(stack);
 		
-		return -1;
 	}
 
 	@Override

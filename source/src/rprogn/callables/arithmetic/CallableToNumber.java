@@ -8,9 +8,8 @@ import rprogn.variable.VarNumber;
 public class CallableToNumber implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		interpreter.reg.push(new VarNumber(interpreter.pop()));
-		return -1;
 	}
 
 	@Override

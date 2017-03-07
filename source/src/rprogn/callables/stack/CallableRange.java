@@ -13,7 +13,7 @@ import rprogn.variable.VarString;
 public class CallableRange implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var vart = interpreter.pop();
 		Var varb = interpreter.pop();
 		if(vart!=null){
@@ -30,7 +30,7 @@ public class CallableRange implements Callable {
 					BigDecimal a = ((VarNumber) varb).data.max(((VarNumber) vart).data);
 					BigDecimal b = ((VarNumber) varb).data.min(((VarNumber) vart).data);
 					
-					for (BigDecimal i = b; i.compareTo(a)<=0; i=i.add(new BigDecimal(1))){
+					for (BigDecimal i = b; i.compareTo(a)<=0; i=i.add(BigDecimal.ONE)){
 						newStack.data.push(new VarNumber(i));
 					}
 					if ((int) ((VarNumber) varb).data.compareTo(b)==0){
@@ -53,7 +53,6 @@ public class CallableRange implements Callable {
 				}
 			}
 		}
-		return -1;
 	}
 
 	@Override

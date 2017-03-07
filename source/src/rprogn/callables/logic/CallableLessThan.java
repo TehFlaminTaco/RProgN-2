@@ -12,7 +12,7 @@ import rprogn.variable.VarString;
 public class CallableLessThan implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var b = interpreter.pop();
 		Var a = interpreter.pop();
 		
@@ -24,7 +24,7 @@ public class CallableLessThan implements Callable {
 			}else{
 				interpreter.reg.push(new VarNumber(0));
 			}
-			return -1;
+			return;
 		}
 		
 		if(a instanceof VarString && b instanceof VarString){
@@ -35,7 +35,7 @@ public class CallableLessThan implements Callable {
 			}else{
 				interpreter.reg.push(new VarNumber(0));
 			}
-			return -1;
+			return;
 		}
 		
 		if(a instanceof VarStack && b instanceof VarStack){
@@ -46,16 +46,15 @@ public class CallableLessThan implements Callable {
 			}else{
 				interpreter.reg.push(new VarNumber(0));
 			}
-			return -1;
+			return;
 		}
 		
 		if(a instanceof VarCallable && b instanceof VarCallable){
 			interpreter.reg.push(new VarNumber(0));
-			return -1;
+			return;
 		}
 		
 		interpreter.reg.push(new VarNumber(0));
-		return -1;
 	}
 
 	@Override

@@ -9,10 +9,9 @@ import rprogn.variable.VarNumber;
 public class CallableNot implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.pop();
 		interpreter.reg.push(a.truthy() ? new VarNumber(0) : new VarNumber(1));
-		return -1;
 	}
 
 	@Override

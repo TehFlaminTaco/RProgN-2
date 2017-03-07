@@ -13,7 +13,7 @@ import rprogn.variable.VarString;
 public class CallableOrd implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var s = interpreter.reg.pop();
 		if (s instanceof VarNumber){
 			BigDecimal chr = ((VarNumber)s).data;
@@ -30,7 +30,6 @@ public class CallableOrd implements Callable {
 			}
 			interpreter.reg.push(newStack);
 		}
-		return -1;
 	}
 
 	@Override

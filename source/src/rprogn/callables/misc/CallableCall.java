@@ -11,16 +11,14 @@ import rprogn.compiler.Compiler;
 public class CallableCall implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var func = interpreter.pop();
 		if(func instanceof VarCallable){
-			return func.getCallable().Call(interpreter, scope);
+			func.getCallable().Call(interpreter, scope);
 		}
 		if(func!=null){
 			Parser.parse(Compiler.compile(func.toString()),interpreter,scope.functions);
-			
 		}
-		return -1;
 	}
 
 	@Override

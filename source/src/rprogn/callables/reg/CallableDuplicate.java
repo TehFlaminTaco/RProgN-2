@@ -7,11 +7,10 @@ import rprogn.interpreter.Interpreter;
 public class CallableDuplicate implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		if(!interpreter.reg.isEmpty()){
 			interpreter.reg.push(interpreter.reg.peek());
 		}
-		return -1;
 	}
 
 	@Override

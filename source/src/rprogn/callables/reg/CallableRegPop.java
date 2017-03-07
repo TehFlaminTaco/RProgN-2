@@ -7,11 +7,10 @@ import rprogn.interpreter.Interpreter;
 public class CallableRegPop implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		if(!interpreter.reg.isEmpty()){
 			interpreter.reg.pop();
 		}
-		return -1;
 	}
 
 	@Override

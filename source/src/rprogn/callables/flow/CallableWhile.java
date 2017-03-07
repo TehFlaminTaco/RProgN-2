@@ -8,14 +8,13 @@ import rprogn.variable.Var;
 public class CallableWhile implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var func = interpreter.pop();
 		if(func!=null){
 			while(!interpreter.reg.isEmpty() && interpreter.reg.pop().truthy()){
 				func.getCallable().Call(interpreter, scope);
 			}
 		}
-		return -1;
 	}
 
 	@Override

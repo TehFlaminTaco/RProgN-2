@@ -10,11 +10,10 @@ public class CallableRepeated implements Callable {
 	public Callable parent;
 	
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		for (int i=0; i < count; i++){
 			parent.Call(interpreter, scope);
 		}
-		return -1;
 	}
 
 	@Override

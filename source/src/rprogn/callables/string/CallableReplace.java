@@ -14,12 +14,12 @@ import rprogn.variable.VarString;
 public class CallableReplace implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var rplmt = interpreter.pop();
-		if(rplmt==null){return -1;}
+		if(rplmt==null){return;}
 		if (rplmt instanceof VarCallable){
 			Var key = interpreter.pop();
-			if(key==null){return -1;}
+			if(key==null){return;}
 			VarCallable func = (VarCallable) rplmt;
 			if (key instanceof VarStack){
 				VarStack stack = (VarStack) key;
@@ -36,7 +36,7 @@ public class CallableReplace implements Callable {
 			}else{
 				String stKey = key.toString();
 				Var target = interpreter.pop();
-				if(target==null){return -1;}
+				if(target==null){return;}
 				if (target instanceof VarStack){
 					VarStack stack = (VarStack) target;
 					VarStack newStack = new VarStack();
@@ -76,7 +76,7 @@ public class CallableReplace implements Callable {
 			}
 		}else{
 			Var key = interpreter.pop();
-			if(key==null){return -1;}
+			if(key==null){return;}
 			if(key instanceof VarStack){
 				VarStack newStack = new VarStack();
 				for (int i=0; i<((VarStack)key).data.size(); i++){
@@ -85,7 +85,7 @@ public class CallableReplace implements Callable {
 				interpreter.reg.push(newStack);
 			}else{
 				Var target = interpreter.pop();
-				if(target==null){return -1;}
+				if(target==null){return;}
 				if (target instanceof VarStack){
 					VarStack stack = (VarStack) target;
 					VarStack newStack = new VarStack();
@@ -98,7 +98,6 @@ public class CallableReplace implements Callable {
 				}
 			}
 		}
-		return -1;
 	}
 
 	@Override

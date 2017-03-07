@@ -12,11 +12,11 @@ import rprogn.variable.VarString;
 public class CallableConcat implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var b = interpreter.pop();
 		Var a = interpreter.pop();
 		
-		if(a==null && b==null){return -1;}
+		if(a==null && b==null){return;}
 		
 		if(b instanceof VarStack || a instanceof VarStack){
 			Var stepper=null;
@@ -38,7 +38,6 @@ public class CallableConcat implements Callable {
 		}else{
 			interpreter.reg.push(concat(a,b));
 		}
-		return -1;
 	}
 	
 	public Var concat(Var a, Var b){

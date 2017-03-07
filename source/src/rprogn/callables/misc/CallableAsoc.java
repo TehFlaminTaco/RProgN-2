@@ -10,7 +10,7 @@ import rprogn.variable.VarString;
 public class CallableAsoc implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var name = interpreter.pop();
 		Var var = interpreter.pop();
 		
@@ -22,7 +22,6 @@ public class CallableAsoc implements Callable {
 			funcs.custom_asoc.put(((VarString)name).data, var.getCallable());
 		}
 		
-		return -1;
 	}
 
 	@Override

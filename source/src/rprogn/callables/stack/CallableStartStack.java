@@ -10,10 +10,9 @@ import rprogn.variable.Var;
 public class CallableStartStack implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		interpreter.stored_reg.push(interpreter.reg);
 		interpreter.reg = new Stack<Var>();
-		return -1;
 	}
 
 	@Override

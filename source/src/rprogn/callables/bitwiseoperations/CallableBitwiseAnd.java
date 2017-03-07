@@ -11,7 +11,7 @@ import rprogn.variable.VarNumber;
 public class CallableBitwiseAnd implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		
 		Var a = interpreter.pop();
 		Var b = interpreter.pop();
@@ -31,7 +31,6 @@ public class CallableBitwiseAnd implements Callable {
 			iB = new BigDecimal(b!=null&&b.truthy() ? 1 : 0);
 		}
 		interpreter.reg.push(new VarNumber(new BigDecimal(iA.toBigInteger().and(iB.toBigInteger()))));
-		return -1;
 	}
 
 	@Override

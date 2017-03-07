@@ -10,7 +10,7 @@ import rprogn.variable.VarStack;
 
 public class CallableEndStack implements Callable {
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		VarStack newStack = new VarStack(interpreter.reg);
 		if(!interpreter.stored_reg.isEmpty()){
 			interpreter.reg = interpreter.stored_reg.pop();
@@ -18,7 +18,6 @@ public class CallableEndStack implements Callable {
 			interpreter.reg = new Stack<Var>();
 		}
 		interpreter.reg.push(newStack);
-		return -1;
 	}
 
 	@Override

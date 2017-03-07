@@ -23,9 +23,8 @@ public class CallablePushVar implements Callable {
 	}
 	
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		interpreter.reg.push(data);
-		return -1;
 	}
 	
 	@Override

@@ -9,7 +9,7 @@ import rprogn.variable.VarNumber;
 public class CallableIntDivide implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.pop();
 		Var b = interpreter.pop();
 		
@@ -18,7 +18,6 @@ public class CallableIntDivide implements Callable {
 			interpreter.reg.push(new VarNumber((((VarNumber)b).data.divideToIntegralValue(((VarNumber)a).data))));
 		}
 		
-		return -1;
 	}
 
 	@Override

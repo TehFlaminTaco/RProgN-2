@@ -11,7 +11,7 @@ import rprogn.variable.VarString;
 public class CallableHead implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var n = interpreter.pop();
 		Var dat;
 		if (n instanceof VarNumber){
@@ -32,7 +32,6 @@ public class CallableHead implements Callable {
 							stack.data.subList(0, ((VarNumber)n).data.intValue())
 							));
 		}
-		return -1;
 	}
 
 	@Override

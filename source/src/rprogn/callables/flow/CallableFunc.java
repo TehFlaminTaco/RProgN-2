@@ -12,7 +12,7 @@ import rprogn.variable.VarCallable;
 public class CallableFunc implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		int d = 0;
 		for (int i = scope.iPointer+1; i < scope.concepts.length; i++){
 			if(scope.concepts[i] instanceof ConceptFunction){
@@ -24,17 +24,18 @@ public class CallableFunc implements Callable {
 					if (d--==0){
 						Concept[] newConcepts = Arrays.copyOfRange(scope.concepts, scope.iPointer+1, i);
 						interpreter.reg.push(new VarCallable(newConcepts));
-						return i;
+						scope.iPointer = i;
+						return;
 					}
 				}
 			}
 		}
-		return 0;
+		scope.iPointer = 0;
 	}
 
 	@Override
 	public String describe() {
-	return "Define a function between this and the matching end.";
+		return "Define a function between this and the matching end.";
 	}
 	
 }

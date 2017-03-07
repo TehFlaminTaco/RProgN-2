@@ -9,7 +9,7 @@ import rprogn.variable.VarStack;
 public class CallablePush implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.pop();
 		Var b = interpreter.pop();
 		if(!(a instanceof VarStack) && b instanceof VarStack){
@@ -21,7 +21,6 @@ public class CallablePush implements Callable {
 			VarStack stack = (VarStack) a;
 			stack.data.push(b);
 		}
-		return -1;
 	}
 
 	@Override

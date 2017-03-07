@@ -8,9 +8,8 @@ import rprogn.variable.VarStack;
 public class CallableNewStack implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		interpreter.reg.push(new VarStack());
-		return -1;
 	}
 
 	@Override

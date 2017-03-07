@@ -12,7 +12,7 @@ import rprogn.variable.VarString;
 public class CallableLen implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var var = interpreter.pop();
 		if(var instanceof VarNumber){
 			interpreter.reg.push(new VarNumber(String.valueOf(((VarNumber)var).data).length()));
@@ -30,7 +30,6 @@ public class CallableLen implements Callable {
 				interpreter.reg.push(new VarNumber(func.data.length));
 			}
 		}
-		return -1;
 	}
 
 	@Override

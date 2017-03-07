@@ -13,7 +13,7 @@ import rprogn.variable.VarStack;
 public class CallableSort implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.pop();
 		if (a instanceof VarCallable){
 			Var b = interpreter.pop();
@@ -25,7 +25,6 @@ public class CallableSort implements Callable {
 			VarStack stack = (VarStack)a;
 			interpreter.reg.push(sort(interpreter,scope,stack.data));
 		}
-		return -1;
 	}
 
 	@Override

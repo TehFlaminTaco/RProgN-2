@@ -10,12 +10,11 @@ import rprogn.variable.VarNumber;
 public class CallableSqrt implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.pop();
 		if(a instanceof VarNumber){
 			interpreter.reg.push(new VarNumber(BigIntSqRoot.bigDecimalSqRootFloor(((VarNumber)a).data.toBigInteger())));
 		}
-		return -1;
 	}
 
 	@Override

@@ -13,39 +13,38 @@ import rprogn.variable.VarString;
 public class CallableMultiply implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.pop();
 		Var b = interpreter.pop();
 		
 		if(a instanceof VarString && b instanceof VarNumber){
 			interpreter.reg.push(((VarString)a).repeat(((VarNumber)b).data));
-			return -1;
+			return;
 		}
 		
 		if(b instanceof VarString && a instanceof VarNumber){
 			interpreter.reg.push(((VarString)b).repeat(((VarNumber)a).data));
-			return -1;
+			return;
 		}
 		
 		
 		if(a instanceof VarNumber && b instanceof VarNumber){
 			interpreter.reg.push(new VarNumber(((VarNumber)b).data.multiply(((VarNumber)a).data)));
-			return -1;
+			return;
 		}
 		
 		if(b instanceof VarNumber && a instanceof VarCallable){
-			for (BigDecimal i=new BigDecimal(1); i.compareTo(((VarNumber)b).data)<=0; i=i.add(new BigDecimal(1))){
+			for (BigDecimal i=BigDecimal.ONE; i.compareTo(((VarNumber)b).data)<=0; i=i.add(BigDecimal.ONE)){
 				((Callable)a).Call(interpreter, scope);
 			}
 		}
 		
 		if(a instanceof VarNumber && b instanceof VarCallable){
-			for (BigDecimal i=new BigDecimal(1); i.compareTo(((VarNumber)b).data)<=0; i=i.add(new BigDecimal(1))){
+			for (BigDecimal i=BigDecimal.ONE; i.compareTo(((VarNumber)b).data)<=0; i=i.add(BigDecimal.ONE)){
 				((Callable)b).Call(interpreter, scope);
 			}
 		}
 		
-		return -1;
 	}
 
 	@Override

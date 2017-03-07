@@ -12,7 +12,7 @@ import rprogn.variable.VarString;
 public class CallableToStack implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var var = interpreter.pop();
 		if(var instanceof VarString){
 			VarStack newStack = new VarStack();
@@ -62,7 +62,6 @@ public class CallableToStack implements Callable {
 				interpreter.reg.push(newStack);
 			}
 		}
-		return -1;
 	}
 
 	@Override

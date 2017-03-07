@@ -9,7 +9,7 @@ import rprogn.variable.VarCallable;
 public class CallableIf implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var func_b = interpreter.pop();
 		Var func_a = interpreter.pop();
 		Var val;
@@ -32,7 +32,6 @@ public class CallableIf implements Callable {
 			}
 		}
 		
-		return -1;
 	}
 
 	@Override

@@ -11,12 +11,12 @@ import rprogn.variable.VarNumber;
 public class CallableSatisfy implements Callable {
 
 	@Override
-	public int Call(Interpreter interpreter, Scope scope) {
+	public void Call(Interpreter interpreter, Scope scope) {
 		Var var = interpreter.pop();
 		Callable func = var.getCallable();
-		if(func==null){return -1;}
+		if(func==null){return;}
 		
-		BigDecimal n=new BigDecimal(0);
+		BigDecimal n=BigDecimal.ZERO;
 		while(true){
 			interpreter.reg.push(new VarNumber(n));
 			func.Call(interpreter, scope);
@@ -25,9 +25,8 @@ public class CallableSatisfy implements Callable {
 				interpreter.reg.push(new VarNumber(n));
 				break;
 			}
-			n=n.add(new BigDecimal(1));
+			n=n.add(BigDecimal.ONE);
 		}
-		return -1;
 	}
 
 	@Override
