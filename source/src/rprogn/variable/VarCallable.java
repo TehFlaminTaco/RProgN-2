@@ -1,7 +1,10 @@
 package rprogn.variable;
 
+import java.util.HashMap;
+
 import rprogn.callables.Callable;
 import rprogn.compiler.concept.Concept;
+import rprogn.functions.Functions;
 import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
 import rprogn.interpreter.Parser;
@@ -9,6 +12,8 @@ import rprogn.interpreter.Parser;
 public class VarCallable implements Var, Callable {
 	public Concept[] data;
 	public Callable otherDat;
+	public HashMap<String, Callable> cur_asoc;
+	
 	public boolean braced = true;
 	
 	public VarCallable(Concept[] init){
@@ -29,18 +34,24 @@ public class VarCallable implements Var, Callable {
 			return otherDat.describe();
 		}
 		if(data!=null){
-			String s = braced ? "{" : "";
+			String s = braced ? (cur_asoc==null ? "{" : "«") : "";
 			for (Concept c : data){
 				s += c.toString();
 			}
-			return s + (braced ? "}" : "");
+			return s + (braced ? (cur_asoc==null ? "}" : "»") : "");
 		}
 		return "[FUNCTION]";
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void Call(Interpreter interpreter, Scope scope){
 		if (otherDat==null){
-			Parser.parse(data, interpreter, scope.functions);
+			Functions funcs = scope.functions;
+			if(cur_asoc!=null){
+				funcs = new Functions();
+				funcs.custom_asoc = (HashMap<String, Callable>) cur_asoc.clone();
+			}
+			Parser.parse(data, interpreter, funcs);
 		}else{
 			otherDat.Call(interpreter, scope);
 		}

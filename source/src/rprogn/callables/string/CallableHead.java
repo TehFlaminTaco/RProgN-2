@@ -6,7 +6,6 @@ import rprogn.interpreter.Interpreter;
 import rprogn.variable.Var;
 import rprogn.variable.VarNumber;
 import rprogn.variable.VarStack;
-import rprogn.variable.VarString;
 
 public class CallableHead implements Callable {
 
@@ -21,16 +20,17 @@ public class CallableHead implements Callable {
 			n = new VarNumber(1);
 		}
 		
-		if(dat instanceof VarString){
-			VarString str = (VarString) dat;
-			interpreter.push(str.data.substring(0, ((VarNumber)n).data.intValue()));
-		}
 		if(dat instanceof VarStack){
 			VarStack stack = (VarStack) dat;
 			interpreter.push(
 					new VarStack(
 							stack.subList(0, ((VarNumber)n).data.intValue())
 							));
+			return;
+		}
+		if(dat!=null){
+			String str = dat.toString();
+			interpreter.push(str.substring(0, ((VarNumber)n).data.intValue()));
 		}
 	}
 

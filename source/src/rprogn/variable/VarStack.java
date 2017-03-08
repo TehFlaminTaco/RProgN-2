@@ -32,11 +32,11 @@ public class VarStack extends Stack<Var> implements Var {
 	}
 	
 	public String toString(){
-		String s = "{";
+		String s = "(";
 		for (int i = 0; i < size(); i++){
-			s = s + get(i).toString() + ((i+1)<size() ? "," : "");
+			s = s + get(i).toString() + ((i+1)<size() ? ", " : "");
 		}
-		return s + "}";
+		return s + ")";
 	}
 	
 	public String type(){

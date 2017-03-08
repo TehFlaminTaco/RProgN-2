@@ -1,6 +1,8 @@
 package rprogn;
 
 import rprogn.callables.Callable;
+import rprogn.callables.flow.CallableContainedEnd;
+import rprogn.callables.flow.CallableContainedFunc;
 import rprogn.callables.flow.CallableEnd;
 import rprogn.callables.flow.CallableFunc;
 import rprogn.compiler.concept.Concept;
@@ -26,10 +28,18 @@ public class Explain {
 					for (int i = 0; i < ind; i++){s = s + "\t";}
 					ind++;
 					s += "{\n";
+				}else if(callable instanceof CallableContainedFunc){
+					for (int i = 0; i < ind; i++){s = s + "\t";}
+					ind++;
+					s += "«\n";
 				}else if(callable instanceof CallableEnd){
 					ind--;
 					for (int i = 0; i < ind; i++){s = s + "\t";}
 					s += "}\n";
+				}else if(callable instanceof CallableContainedEnd){
+					ind--;
+					for (int i = 0; i < ind; i++){s = s + "\t";}
+					s += "»\n";
 				}else if(callable == null){
 					for (int i = 0; i < ind; i++){s = s + "\t";}
 					s += ca.toString()+"\tAn unknown function\n";

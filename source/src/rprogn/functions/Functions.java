@@ -1,6 +1,7 @@
 package rprogn.functions;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import rprogn.Flags;
 import rprogn.callables.Callable;
@@ -63,6 +64,8 @@ public class Functions {
 		// Flow of Control
 		newDefault(new CallableFunc(), "function", "{");
 		newDefault(new CallableEnd(), "end", "}");
+		newDefault(new CallableContainedFunc(), "«");
+		newDefault(new CallableContainedEnd(), "»");
 		newDefault(new CallableIf(), "if", "?");
 		newDefault(new CallableWhile(), "while", ":");
 		newDefault(new CallableFor(), "for", ";");
@@ -182,6 +185,23 @@ public class Functions {
 	
 	public static void newDefault(double var, String... name){
 		newDefault(new CallablePushVar(var),name);
+	}
+	
+	public HashMap<String,Callable> duplicateAsoc(){
+		HashMap<String, Callable> newMap = new HashMap<String, Callable>();
+		
+		for(Map.Entry<String, Callable> entry : custom_asoc.entrySet()){
+			newMap.put(entry.getKey(), entry.getValue());
+		}
+		
+		if(parent!=null){
+			HashMap<String, Callable> parentMap = parent.duplicateAsoc();
+			for(Map.Entry<String, Callable> entry : newMap.entrySet()){
+				parentMap.put(entry.getKey(), entry.getValue());
+			}
+			newMap = parentMap;
+		}
+		return newMap;
 	}
 	
 	public static void newDefault(Callable call, String... name){

@@ -15,6 +15,7 @@ public class CallableCall implements Callable {
 		Var func = interpreter.pop();
 		if(func instanceof VarCallable){
 			func.getCallable().Call(interpreter, scope);
+			return;
 		}
 		if(func!=null){
 			Parser.parse(Compiler.compile(func.toString()),interpreter,scope.functions);
