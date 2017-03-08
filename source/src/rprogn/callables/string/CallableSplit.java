@@ -32,7 +32,7 @@ public class CallableSplit implements Callable {
 		
 		String[] split = sB.data.split(sA.data);
 		for(int i=0; i<split.length;i++){
-			stack.push(new VarString(split[i]));
+			stack.push(split[i]);
 		}
 		
 		interpreter.push(stack);

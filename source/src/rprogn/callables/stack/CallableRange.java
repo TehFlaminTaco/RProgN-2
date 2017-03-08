@@ -31,7 +31,7 @@ public class CallableRange implements Callable {
 					BigDecimal b = ((VarNumber) varb).data.min(((VarNumber) vart).data);
 					
 					for (BigDecimal i = b; i.compareTo(a)<=0; i=i.add(BigDecimal.ONE)){
-						newStack.push(new VarNumber(i));
+						newStack.push(i);
 					}
 					if ((int) ((VarNumber) varb).data.compareTo(b)==0){
 						VarStack reverseStack = new VarStack();
@@ -47,7 +47,7 @@ public class CallableRange implements Callable {
 					int a = Math.min((int) ((VarString) varb).data.charAt(0), (int) ((VarString) vart).data.charAt(0));
 					int b = Math.max((int) ((VarString) varb).data.charAt(0), (int) ((VarString) vart).data.charAt(0));
 					for (int i = a; i <= b; i++){
-						newStack.push(new VarString(String.valueOf((char) i)));
+						newStack.push(String.valueOf((char) i));
 					}
 					interpreter.push(newStack);
 				}

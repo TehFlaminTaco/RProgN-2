@@ -23,7 +23,7 @@ public class CallableHead implements Callable {
 		
 		if(dat instanceof VarString){
 			VarString str = (VarString) dat;
-			interpreter.push(new VarString(str.data.substring(0, ((VarNumber)n).data.intValue())));
+			interpreter.push(str.data.substring(0, ((VarNumber)n).data.intValue()));
 		}
 		if(dat instanceof VarStack){
 			VarStack stack = (VarStack) dat;

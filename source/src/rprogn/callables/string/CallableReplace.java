@@ -9,7 +9,6 @@ import rprogn.interpreter.Interpreter;
 import rprogn.variable.Var;
 import rprogn.variable.VarCallable;
 import rprogn.variable.VarStack;
-import rprogn.variable.VarString;
 
 public class CallableReplace implements Callable {
 
@@ -46,7 +45,7 @@ public class CallableReplace implements Callable {
 						Matcher m = p.matcher(s);
 						StringBuffer sb = new StringBuffer();
 						while(m.find()){
-							interpreter.push(new VarString(m.group()));
+							interpreter.push(m.group());
 							func.Call(interpreter, scope);
 							Var popped = interpreter.pop();
 							if (popped!=null){
@@ -54,7 +53,7 @@ public class CallableReplace implements Callable {
 							}
 						}
 						m.appendTail(sb);
-						newStack.push(new VarString(sb.toString()));
+						newStack.push(sb.toString());
 					}
 					interpreter.push(newStack);
 				}else{
@@ -63,7 +62,7 @@ public class CallableReplace implements Callable {
 					Matcher m = p.matcher(s);
 					StringBuffer sb = new StringBuffer();
 					while(m.find()){
-						interpreter.push(new VarString(m.group()));
+						interpreter.push(m.group());
 						func.Call(interpreter, scope);
 						Var popped = interpreter.pop();
 						if (popped!=null){
@@ -71,7 +70,7 @@ public class CallableReplace implements Callable {
 						}
 					}
 					m.appendTail(sb);
-					interpreter.push(new VarString(sb.toString()));
+					interpreter.push(sb.toString());
 				}
 			}
 		}else{
@@ -90,11 +89,11 @@ public class CallableReplace implements Callable {
 					VarStack stack = (VarStack) target;
 					VarStack newStack = new VarStack();
 					for (int i=0; i<stack.size(); i++){
-						newStack.push(new VarString(stack.get(i).toString().replaceAll(key.toString(), rplmt.toString())));
+						newStack.push(stack.get(i).toString().replaceAll(key.toString(), rplmt.toString()));
 					}
 					interpreter.push(newStack);
 				}else{
-					interpreter.push(new VarString(target.toString().replaceAll(key.toString(), rplmt.toString())));
+					interpreter.push(target.toString().replaceAll(key.toString(), rplmt.toString()));
 				}
 			}
 		}

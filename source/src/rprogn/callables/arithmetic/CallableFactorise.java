@@ -2,7 +2,6 @@ package rprogn.callables.arithmetic;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Stack;
 
 import rprogn.callables.Callable;
 import rprogn.callables.stack.CallableSort;
@@ -10,6 +9,7 @@ import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
 import rprogn.variable.Var;
 import rprogn.variable.VarNumber;
+import rprogn.variable.VarStack;
 
 public class CallableFactorise implements Callable {
 	
@@ -21,32 +21,32 @@ public class CallableFactorise implements Callable {
 		Var var = interpreter.pop();
 		if (var instanceof VarNumber){
 			BigInteger n = ((VarNumber)var).data.toBigInteger();
-			Stack<Var> factors = new Stack<Var>();
+			VarStack factors = new VarStack();
 			
 			if(n.compareTo(BigInteger.ZERO)<0){
-				factors.push(new VarNumber(-1));
+				factors.push(-1);
 				n = n.negate();
 			}
 			
 			if(n.equals(BigInteger.ZERO)){
-				factors.push(new VarNumber(0));
+				factors.push(0);
 			}else if(n.equals(BigInteger.ONE)){
-				factors.push(new VarNumber(1));
+				factors.push(1);
 			}else if(n.equals(TWO)){
-				factors.push(new VarNumber(1));
-				factors.push(new VarNumber(2));
+				factors.push(1);
+				factors.push(2);
 			}else{
-				factors.push(new VarNumber(1));
-				factors.push(new VarNumber(new BigDecimal(n)));
+				factors.push(1);
+				factors.push(new BigDecimal(n));
 				if(n.mod(TWO).equals(BigInteger.ZERO)){
-					factors.push(new VarNumber(2));
-					factors.push(new VarNumber(new BigDecimal(n.divide(TWO))));
+					factors.push(2);
+					factors.push(new BigDecimal(n.divide(TWO)));
 				}
 				for(BigInteger i = THREE; i.multiply(i).compareTo(n)<=0; i=i.add(BigInteger.ONE)){
 					if(BigInteger.ZERO.equals(n.mod(i))){
-						factors.push(new VarNumber(new BigDecimal(i)));
+						factors.push(new BigDecimal(i));
 						if(i.multiply(i).compareTo(n)<0)
-							factors.push(new VarNumber(new BigDecimal(n.divide(i))));
+							factors.push(new BigDecimal(n.divide(i)));
 					}
 				}
 			}

@@ -29,7 +29,7 @@ public class CallableMultiply implements Callable {
 		
 		
 		if(a instanceof VarNumber && b instanceof VarNumber){
-			interpreter.push(new VarNumber(((VarNumber)b).data.multiply(((VarNumber)a).data)));
+			interpreter.push(((VarNumber)b).data.multiply(((VarNumber)a).data));
 			return;
 		}
 		

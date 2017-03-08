@@ -5,8 +5,6 @@ import java.io.FileNotFoundException;
 
 import rprogn.functions.Functions;
 import rprogn.interpreter.Interpreter;
-import rprogn.variable.VarNumber;
-import rprogn.variable.VarString;
 
 public class RProgN {
 	static Interpreter interpreter;
@@ -24,11 +22,11 @@ public class RProgN {
 				Flags.SetFlag(arg.substring(2));
 			}else{
 				if (arg.matches("^'.*'$")){
-					interpreter.push(new VarString(arg.substring(1,arg.length()-1)));
+					interpreter.push(arg.substring(1,arg.length()-1));
 				}else if(arg.matches("(-?\\d+(\\.\\d*)?|(-?\\d+)?.\\d+)")){
-					interpreter.push(new VarNumber(arg));
+					interpreter.push(arg);
 				}else{
-					interpreter.push(new VarString(arg));
+					interpreter.push(arg);
 				}
 			}
 		}

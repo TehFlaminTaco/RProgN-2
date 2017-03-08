@@ -14,7 +14,7 @@ public class CallablePower implements Callable {
 		Var b = interpreter.pop();
 		
 		if(a instanceof VarNumber && b instanceof VarNumber){
-			interpreter.push(new VarNumber(((VarNumber)b).data.pow(((VarNumber)a).data.intValue())));
+			interpreter.push(((VarNumber)b).data.pow(((VarNumber)a).data.intValue()));
 		}
 		
 	}

@@ -9,7 +9,6 @@ import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
 import rprogn.variable.Var;
 import rprogn.variable.VarNumber;
-import rprogn.variable.VarString;
 
 public class CallableFormat implements Callable {
 
@@ -35,7 +34,7 @@ public class CallableFormat implements Callable {
 		}
 		Var[] argV = new Var[args.size()];
 		argV = args.toArray(argV);
-		interpreter.push(new VarString(format(form, argV)));
+		interpreter.push(format(form, argV));
 		
 	}
 

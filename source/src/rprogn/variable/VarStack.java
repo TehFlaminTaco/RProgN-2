@@ -51,6 +51,10 @@ public class VarStack extends Stack<Var> implements Var {
 		push(new VarNumber(dbl));
 	}
 	
+	public void push(int i){
+		push(new VarNumber(i));
+	}
+	
 	public void push(BigInteger bi){
 		push(new VarNumber(new BigDecimal(bi)));
 	}

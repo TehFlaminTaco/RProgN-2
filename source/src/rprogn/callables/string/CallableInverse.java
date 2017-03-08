@@ -5,7 +5,6 @@ import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
 import rprogn.variable.Var;
 import rprogn.variable.VarStack;
-import rprogn.variable.VarString;
 
 public class CallableInverse implements Callable {
 
@@ -20,7 +19,7 @@ public class CallableInverse implements Callable {
 			}
 			interpreter.push(newStack);
 		}else if(var != null){
-			interpreter.push(new VarString(new StringBuilder(var.toString()).reverse().toString()));
+			interpreter.push(new StringBuilder(var.toString()).reverse().toString());
 		}
 	}
 

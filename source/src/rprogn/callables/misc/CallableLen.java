@@ -15,19 +15,19 @@ public class CallableLen implements Callable {
 	public void Call(Interpreter interpreter, Scope scope) {
 		Var var = interpreter.pop();
 		if(var instanceof VarNumber){
-			interpreter.push(new VarNumber(String.valueOf(((VarNumber)var).data).length()));
+			interpreter.push(String.valueOf(((VarNumber)var).data).length());
 		}
 		if(var instanceof VarString){
-			interpreter.push(new VarNumber(((VarString) var).data.length()));
+			interpreter.push(((VarString) var).data.length());
 		}
 		if(var instanceof VarStack){
-			interpreter.push(new VarNumber(((VarStack) var).size()));
+			interpreter.push(((VarStack) var).size());
 		}
 		if(var instanceof VarCallable){
 			VarCallable func = (VarCallable) var;
 			
 			if(func.data!=null){
-				interpreter.push(new VarNumber(func.data.length));
+				interpreter.push(func.data.length);
 			}
 		}
 	}

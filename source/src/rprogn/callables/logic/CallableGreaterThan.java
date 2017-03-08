@@ -20,9 +20,9 @@ public class CallableGreaterThan implements Callable {
 			VarNumber aN = (VarNumber) a;
 			VarNumber bN = (VarNumber) b;
 			if(aN.data.compareTo(bN.data)==1){
-				interpreter.push(new VarNumber(1));
+				interpreter.push(1);
 			}else{
-				interpreter.push(new VarNumber(0));
+				interpreter.push(0);
 			}
 			return;
 		}
@@ -31,9 +31,9 @@ public class CallableGreaterThan implements Callable {
 			VarString aS = (VarString) a;
 			VarString bS = (VarString) b;
 			if(aS.data.compareTo(bS.data)>=1){
-				interpreter.push(new VarNumber(1));
+				interpreter.push(1);
 			}else{
-				interpreter.push(new VarNumber(0));
+				interpreter.push(0);
 			}
 			return;
 		}
@@ -42,19 +42,19 @@ public class CallableGreaterThan implements Callable {
 			VarStack aS = (VarStack) a;
 			VarStack bS = (VarStack) b;
 			if(aS.size()>bS.size()){
-				interpreter.push(new VarNumber(1));
+				interpreter.push(1);
 			}else{
-				interpreter.push(new VarNumber(0));
+				interpreter.push(0);
 			}
 			return;
 		}
 		
 		if(a instanceof VarCallable && b instanceof VarCallable){
-			interpreter.push(new VarNumber(0));
+			interpreter.push(0);
 			return;
 		}
 		
-		interpreter.push(new VarNumber(0));
+		interpreter.push(0);
 	}
 
 	@Override

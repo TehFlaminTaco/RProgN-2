@@ -15,7 +15,7 @@ public class CallableIntDivide implements Callable {
 		
 		if(a instanceof VarNumber && b instanceof VarNumber){
 			
-			interpreter.push(new VarNumber((((VarNumber)b).data.divideToIntegralValue(((VarNumber)a).data))));
+			interpreter.push((((VarNumber)b).data.divideToIntegralValue(((VarNumber)a).data)));
 		}
 		
 	}

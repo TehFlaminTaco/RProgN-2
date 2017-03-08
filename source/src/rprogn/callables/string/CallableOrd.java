@@ -8,7 +8,6 @@ import rprogn.interpreter.Interpreter;
 import rprogn.variable.Var;
 import rprogn.variable.VarNumber;
 import rprogn.variable.VarStack;
-import rprogn.variable.VarString;
 
 public class CallableOrd implements Callable {
 
@@ -17,7 +16,7 @@ public class CallableOrd implements Callable {
 		Var s = interpreter.reg.pop();
 		if (s instanceof VarNumber){
 			BigDecimal chr = ((VarNumber)s).data;
-			interpreter.push(new VarString(String.valueOf((char)chr.intValue())));
+			interpreter.push(String.valueOf((char)chr.intValue()));
 		}else if(s instanceof VarStack){
 			VarStack stack = (VarStack) s;
 			VarStack newStack = new VarStack();
@@ -25,7 +24,7 @@ public class CallableOrd implements Callable {
 				Var sub = stack.get(i);
 				if(sub instanceof VarNumber){
 					BigDecimal chr = ((VarNumber)sub).data;
-					newStack.push(new VarString(String.valueOf((char)chr.intValue())));
+					newStack.push(String.valueOf((char)chr.intValue()));
 				}
 			}
 			interpreter.push(newStack);

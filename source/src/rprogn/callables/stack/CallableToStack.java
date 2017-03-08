@@ -18,7 +18,7 @@ public class CallableToStack implements Callable {
 			VarStack newStack = new VarStack();
 			VarString varStr = (VarString) var;
 			for (int i=0; i<varStr.data.length(); i++){
-				newStack.push(new VarString(String.valueOf(varStr.data.charAt(i))));
+				newStack.push(String.valueOf(varStr.data.charAt(i)));
 			}
 			interpreter.push(newStack);
 		}
@@ -28,7 +28,7 @@ public class CallableToStack implements Callable {
 			Var func = interpreter.pop();
 			if(func instanceof VarCallable){
 				for (int i = 1; i <= varNum.data.intValue(); i++){
-					interpreter.push(new VarNumber(i));
+					interpreter.push(i);
 					((VarCallable) func).Call(interpreter, scope);
 					if(!interpreter.reg.isEmpty()){
 						newStack.push(interpreter.reg.pop());
@@ -37,11 +37,11 @@ public class CallableToStack implements Callable {
 			}else if(func!=null){
 				interpreter.push(var);
 				for (int i = 1; i <= varNum.data.intValue(); i++){
-					newStack.push(new VarNumber(i));
+					newStack.push((double)i);
 				}
 			}else{
 				for (int i = 1; i <= varNum.data.intValue(); i++){
-					newStack.push(new VarNumber(i));
+					newStack.push((double)i);
 				}
 			}
 			interpreter.push(newStack);
@@ -53,7 +53,7 @@ public class CallableToStack implements Callable {
 				VarNumber varNum = (VarNumber) num;
 				VarStack newStack = new VarStack();
 				for (int i = 1; i <= varNum.data.intValue(); i++){
-					interpreter.push(new VarNumber(i));
+					interpreter.push(i);
 					((VarCallable) func).Call(interpreter, scope);
 					if(!interpreter.reg.isEmpty()){
 						newStack.push(interpreter.reg.pop());

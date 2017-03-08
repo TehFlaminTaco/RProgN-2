@@ -46,7 +46,7 @@ public class CallableFor implements Callable {
 				VarNumber Nmax = (VarNumber) max;
 				VarNumber Nkey = (VarNumber) key;
 				for (BigDecimal i=Nmin.data; i.compareTo(Nmax.data)<=0; i=i.add(Nkey.data)){
-					interpreter.push(new VarNumber(i));
+					interpreter.push(i);
 					funcC.Call(interpreter, scope);
 				}
 				

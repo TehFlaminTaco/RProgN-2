@@ -7,7 +7,6 @@ import rprogn.compiler.concept.ConceptFunction;
 import rprogn.compiler.concept.ConceptString;
 import rprogn.functions.Functions;
 import rprogn.functions.Scope;
-import rprogn.variable.VarString;
 
 public class Parser {
 	
@@ -35,7 +34,7 @@ public class Parser {
 					}
 				}
 			}else if(concept instanceof ConceptString){
-				interpreter.push(new VarString(((ConceptString)concept).string));
+				interpreter.push(((ConceptString)concept).string);
 			}
 		}
 	}

@@ -18,23 +18,23 @@ public class CallableIsPrime implements Callable {
 		if (var instanceof VarNumber){
 			BigInteger n = ((VarNumber) var).data.toBigInteger();
 			if(n.compareTo(BigInteger.ONE)<=0){
-				interpreter.push(new VarNumber(0));
+				interpreter.push(0);
 				return;
 			}
 			
 			if(n.equals(TWO)){
-				interpreter.push(new VarNumber(1));
+				interpreter.push(1);
 				return;
 			}
 			
 			for(BigInteger i=TWO; i.multiply(i).compareTo(n)<=0; i=i.add(BigInteger.ONE)){
 				if(BigInteger.ZERO.equals(n.mod(i))){
-					interpreter.push(new VarNumber(0));
+					interpreter.push(0);
 					return;
 				}
 			}
 			
-			interpreter.push(new VarNumber(1));
+			interpreter.push(1);
 		}
 	}
 

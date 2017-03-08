@@ -6,7 +6,6 @@ import rprogn.callables.Callable;
 import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
 import rprogn.variable.Var;
-import rprogn.variable.VarNumber;
 
 public class CallableSatisfy implements Callable {
 
@@ -18,11 +17,11 @@ public class CallableSatisfy implements Callable {
 		
 		BigDecimal n=BigDecimal.ZERO;
 		while(true){
-			interpreter.push(new VarNumber(n));
+			interpreter.push(n);
 			func.Call(interpreter, scope);
 			Var popped = interpreter.pop();
 			if(popped!=null && popped.truthy()){
-				interpreter.push(new VarNumber(n));
+				interpreter.push(n);
 				break;
 			}
 			n=n.add(BigDecimal.ONE);

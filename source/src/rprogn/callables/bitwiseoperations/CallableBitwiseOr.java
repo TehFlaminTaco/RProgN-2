@@ -30,7 +30,7 @@ public class CallableBitwiseOr implements Callable {
 		}else{
 			iB = new BigDecimal(b!=null&&b.truthy() ? 1 : 0);
 		}
-		interpreter.push(new VarNumber(new BigDecimal(iA.toBigInteger().or(iB.toBigInteger()))));
+		interpreter.push(new BigDecimal(iA.toBigInteger().or(iB.toBigInteger())));
 	}
 
 	@Override

@@ -23,7 +23,7 @@ public class CallableTail implements Callable {
 		
 		if(dat instanceof VarString){
 			VarString str = (VarString) dat;
-			interpreter.push(new VarString(str.data.substring(str.data.length()-((VarNumber)n).data.intValue())));
+			interpreter.push(str.data.substring(str.data.length()-((VarNumber)n).data.intValue()));
 		}
 		if(dat instanceof VarStack){
 			VarStack stack = (VarStack) dat;
