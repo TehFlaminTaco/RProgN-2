@@ -67,6 +67,7 @@ public class Functions {
 		newDefault(new CallableWhile(), "while", ":");
 		newDefault(new CallableFor(), "for", ";");
 		newDefault(new CallableSatisfy(), "é");
+		newDefault(new CallableHalt(), "exit", "¶");
 		
 		// Stacks
 		newDefault(new CallableNewStack(), "stack", "s");
