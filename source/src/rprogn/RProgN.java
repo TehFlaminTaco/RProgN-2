@@ -40,6 +40,7 @@ public class RProgN {
 		}
 		
 		try{
+			double start_time = System.currentTimeMillis();
 			if(Flags.FlagToggled("s")){
 				interpreter.execute(target);
 			}else{
@@ -50,7 +51,9 @@ public class RProgN {
 				String s = interpreter.reg.pop().toString();
 				if(interpreter.reg.isEmpty()){System.out.print(s);}else{System.out.println(s);};
 			}
-			
+			if(Flags.FlagToggled("t")){
+				System.err.println("Took "+(System.currentTimeMillis()-start_time)/1000+"s");
+			}
 		}catch(Exception e){
 			if(e instanceof FileNotFoundException){
 				System.err.println("Could not find file to run!");
