@@ -164,7 +164,7 @@ public class Functions {
 			return new VarNumber(func.substring(1)).getCallable();
 		}
 		
-		if(func.matches("^([\"']).*\\1$")){
+		if(func.matches("^([\"'])[\\x00-\\xFF]*\\1$")){
 			return new VarString(func.substring(1,func.length()-1)).getCallable();
 		}
 		

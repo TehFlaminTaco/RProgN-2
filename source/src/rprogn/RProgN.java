@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 import rprogn.functions.Functions;
+import rprogn.helpers.RUtil;
 import rprogn.interpreter.Interpreter;
+import rprogn.variable.VarNumber;
 
 public class RProgN {
 	static Interpreter interpreter;
@@ -23,8 +25,8 @@ public class RProgN {
 			}else{
 				if (arg.matches("^'.*'$")){
 					interpreter.push(arg.substring(1,arg.length()-1));
-				}else if(arg.matches("(-?\\d+(\\.\\d*)?|(-?\\d+)?.\\d+)")){
-					interpreter.push(arg);
+				}else if(RUtil.is_number(arg)){
+					interpreter.push(new VarNumber(arg));
 				}else{
 					interpreter.push(arg);
 				}

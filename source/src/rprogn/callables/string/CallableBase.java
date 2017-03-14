@@ -8,7 +8,6 @@ import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
 import rprogn.variable.Var;
 import rprogn.variable.VarNumber;
-import rprogn.variable.VarString;
 
 public class CallableBase implements Callable {
 
@@ -25,11 +24,7 @@ public class CallableBase implements Callable {
 					interpreter.push(nTarget.data.toBigInteger().toString(nBase.data.intValue()));
 				}
 			}else if(nBase.data.compareTo(new BigDecimal(0)) < 0){
-				if(target instanceof VarString){
-					VarString sTarget = (VarString) target;
-					
-					interpreter.push(new BigDecimal(new BigInteger(sTarget.data, nBase.data.intValue())));
-				}
+				interpreter.push(new BigDecimal(new BigInteger(target.toString(), -nBase.data.intValue())));
 			}
 		}
 	}
