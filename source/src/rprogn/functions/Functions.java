@@ -81,6 +81,8 @@ public class Functions {
 		newDefault(new CallablePush(), "push", "’");
 		newDefault(new CallablePop(), "pop", "‘");
 		newDefault(new CallableSort(), "sort","§");
+		newDefault(new CallableRotateRight(), "›");
+		newDefault(new CallableRotateLeft(), "‹");
 		
 		// Strings
 		newDefault(new CallableReplace(), "replace", "r");
@@ -206,6 +208,9 @@ public class Functions {
 	
 	public static void newDefault(Callable call, String... name){
 		for(int i=0; i<name.length; i++){
+			if(default_functions.get(name[i])!=null){
+				System.err.println("WARNING, "+name[i]+" USED MULTIPLE TIMES!");
+			}
 			default_functions.put(name[i], call);
 		}
 	}

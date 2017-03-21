@@ -8,6 +8,7 @@ import rprogn.interpreter.Interpreter;
 import rprogn.variable.Var;
 import rprogn.variable.VarCallable;
 import rprogn.variable.VarNumber;
+import rprogn.variable.VarStack;
 import rprogn.variable.VarString;
 
 public class CallableMultiply implements Callable {
@@ -16,6 +17,29 @@ public class CallableMultiply implements Callable {
 	public void Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.pop();
 		Var b = interpreter.pop();
+		
+		
+		if(a instanceof VarStack){
+			if(b!=null){
+				interpreter.push(b);
+			}
+			VarStack stack = (VarStack)a;
+			Var t = null;
+			for (int i=0; i<stack.size(); i++){
+				if(t==null){
+					t=stack.get(i);
+				}else{
+					interpreter.push(t);
+					interpreter.push(stack.get(i));
+					this.Call(interpreter, scope);
+					Var tempT = interpreter.pop();
+					if(tempT!=null){
+						t = tempT;
+					}
+				}
+			}
+			interpreter.push(t);
+		}
 		
 		if(a instanceof VarString && b instanceof VarNumber){
 			interpreter.push(((VarString)a).repeat(((VarNumber)b).data));
