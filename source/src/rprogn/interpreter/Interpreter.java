@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Random;
 import java.util.Stack;
 
 import rprogn.Explain;
@@ -20,10 +21,14 @@ import rprogn.variable.VarString;
 public class Interpreter {
 	public Stack<Var> reg;
 	public Stack<Stack<Var>> stored_reg; // You know it's good when you've got a 2d Stack.
+	public Random rng;
+	
 	
 	public Interpreter(){
 		reg = new Stack<Var>();
 		stored_reg = new Stack<Stack<Var>>();
+		rng = new Random();
+		rng.setSeed(System.currentTimeMillis());
 	}
 	
 	public void execute(File file) throws FileNotFoundException, IOException{

@@ -45,6 +45,11 @@ public class Functions {
 		newDefault(new CallableSqrt(), "š");
 		newDefault(new CallableFactorise(), "ƒ");
 		newDefault(new CallableIsPrime(), "P");
+		newDefault(new CallableMin(), "m");
+		newDefault(new CallableMax(), "M");
+		newDefault(new CallableRandom(), "ñ");
+		newDefault(new CallableAbs(), "a");
+		
 		
 		// Logical Functions
 		newDefault(new CallableEquals(), "equals", "e");
@@ -107,6 +112,8 @@ public class Functions {
 		// Constants
 		newDefault(new CallablePushSource(), "q");
 		newDefault(new CallablePushReg(), "ý");
+		newDefault(new CallablePushTime(), "t");
+		newDefault(new CallablePushTimeMS(), "™");
 		newDefault("x", "x");
 		newDefault("y", "y");
 		newDefault("z", "z");
