@@ -13,7 +13,7 @@ public class CallableSqrt implements Callable {
 	public void Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.pop();
 		if(a instanceof VarNumber){
-			interpreter.push(BigIntSqRoot.bigDecimalSqRootFloor(((VarNumber)a).data.toBigInteger()));
+			interpreter.push(BigIntSqRoot.sqrt(((VarNumber)a).data, 256));
 		}
 	}
 

@@ -49,6 +49,7 @@ public class Functions {
 		newDefault(new CallableMax(), "M");
 		newDefault(new CallableRandom(), "ñ");
 		newDefault(new CallableAbs(), "a");
+		newDefault(new CallableLog(), "Š");
 		
 		
 		// Logical Functions

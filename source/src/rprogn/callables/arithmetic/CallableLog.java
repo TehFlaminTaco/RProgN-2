@@ -7,23 +7,21 @@ import rprogn.interpreter.Interpreter;
 import rprogn.variable.Var;
 import rprogn.variable.VarNumber;
 
-public class CallablePower implements Callable {
+public class CallableLog implements Callable {
 
 	@Override
 	public void Call(Interpreter interpreter, Scope scope) {
 		Var a = interpreter.pop();
+		if(!(a instanceof VarNumber)){if(a!=null){interpreter.push(a);}return;}
 		Var b = interpreter.pop();
+		if(!(b instanceof VarNumber)){if(b!=null){interpreter.push(b);}interpreter.push(a);return;}
 		
-		if(a instanceof VarNumber && b instanceof VarNumber){
-			interpreter.push(RUtil.pow(((VarNumber)b).data,((VarNumber)a).data));
-		}
-		
+		interpreter.push(RUtil.log(((VarNumber)b).data, ((VarNumber)a).data, 64));
 	}
 
 	@Override
 	public String describe() {
-		
-		return "Pop two values from the reg stack, the value under the top is raised to the top power, and pushed to the reg stack.";
+		return "Push log{a}{b} to the stack.";
 	}
 
 }

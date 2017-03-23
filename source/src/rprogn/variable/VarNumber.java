@@ -2,6 +2,8 @@ package rprogn.variable;
 
 import java.math.BigDecimal;
 
+import rprogn.helpers.RUtil;
+
 public class VarNumber implements  Var {
 	public BigDecimal data;
 	
@@ -14,7 +16,7 @@ public class VarNumber implements  Var {
 	}
 	
 	public VarNumber(BigDecimal data){
-		this.data = data;
+		this.data = RUtil.optimiseDec(data);
 	}
 	
 	public VarNumber(String data){
