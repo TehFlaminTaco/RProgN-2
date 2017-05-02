@@ -48,7 +48,7 @@ public class Functions {
 		newDefault(new CallableMin(), "m");
 		newDefault(new CallableMax(), "M");
 		newDefault(new CallableRandom(), "ñ");
-		newDefault(new CallableAbs(), "a");
+		newDefault(new CallableAbs(), "â");
 		newDefault(new CallableLog(), "Š");
 		
 		
@@ -115,6 +115,8 @@ public class Functions {
 		newDefault(new CallablePushReg(), "ý");
 		newDefault(new CallablePushTime(), "t");
 		newDefault(new CallablePushTimeMS(), "™");
+		newDefault("abcdefghijklmnopqrstuvwxyz", "a");
+		newDefault("ABCDEFGHIJKLMNOPQRSTUVWXYZ", "A");
 		newDefault("x", "x");
 		newDefault("y", "y");
 		newDefault("z", "z");
