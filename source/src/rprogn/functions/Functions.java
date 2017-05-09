@@ -72,6 +72,8 @@ public class Functions {
 		newDefault(new CallableEnd(), "end", "}");
 		newDefault(new CallableContainedFunc(), "«");
 		newDefault(new CallableContainedEnd(), "»");
+		newDefault(new CallableDoubleFunction(), "²");
+		newDefault(new CallableTripleFunction(), "³");
 		newDefault(new CallableIf(), "if", "?");
 		newDefault(new CallableWhile(), "while", ":");
 		newDefault(new CallableFor(), "for", ";");

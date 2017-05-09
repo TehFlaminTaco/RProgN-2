@@ -9,6 +9,7 @@ import rprogn.variable.Var;
 import rprogn.variable.VarCallable;
 import rprogn.variable.VarNumber;
 import rprogn.variable.VarStack;
+import rprogn.variable.VarString;
 
 public class CallableFor implements Callable {
 
@@ -18,6 +19,14 @@ public class CallableFor implements Callable {
 		if (func instanceof VarCallable){
 			VarCallable funcC = (VarCallable) func;
 			Var key = interpreter.pop();
+			if (key instanceof VarString){
+				VarString string = (VarString) key;
+				for(int i=0; i < string.data.length(); i++){
+					interpreter.push(new VarString(new String(new char[]{string.data.charAt(i)})));
+					funcC.Call(interpreter, scope);
+				}
+				return;
+			}
 			if (key instanceof VarStack){
 				VarStack stack = (VarStack) key;
 				for (int i=0; i < stack.size(); i++){
