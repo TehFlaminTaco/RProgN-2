@@ -23,7 +23,10 @@ public class CallableFunc implements Callable {
 				}else if(func instanceof CallableEnd){
 					if (d--==0){
 						Concept[] newConcepts = Arrays.copyOfRange(scope.concepts, scope.iPointer+1, i);
-						interpreter.push(new VarCallable(newConcepts));
+						VarCallable callable = new VarCallable(newConcepts);
+						callable.left_brace = "{";
+						callable.right_brace = "}";
+						interpreter.push(callable);
 						scope.iPointer = i;
 						return;
 					}

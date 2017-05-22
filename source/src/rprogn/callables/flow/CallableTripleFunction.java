@@ -13,7 +13,9 @@ public class CallableTripleFunction implements Callable {
 	@Override
 	public void Call(Interpreter interpreter, Scope scope) {
 		Concept[] newFunc = Arrays.copyOfRange(scope.concepts, scope.iPointer+1, scope.iPointer+4);
-		interpreter.push(new VarCallable(newFunc));
+		VarCallable callable = new VarCallable(newFunc);
+		callable.left_brace = "³";
+		interpreter.push(callable);
 		scope.iPointer += 3;
 	}
 

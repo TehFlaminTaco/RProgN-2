@@ -22,7 +22,7 @@ public class CallableTacted implements Callable {
 
 	@Override
 	public String describe() {
-		return "Two functions added together.";
+		return func_a.toString() + func_b.toString();
 	}
 	
 }

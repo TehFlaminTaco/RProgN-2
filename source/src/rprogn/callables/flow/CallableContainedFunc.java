@@ -25,6 +25,8 @@ public class CallableContainedFunc implements Callable {
 						Concept[] newConcepts = Arrays.copyOfRange(scope.concepts, scope.iPointer+1, i);
 						VarCallable callable = new VarCallable(newConcepts);
 						callable.cur_asoc = scope.functions.duplicateAsoc();
+						callable.left_brace = "«";
+						callable.right_brace = "»";
 						interpreter.push(callable);
 						scope.iPointer = i;
 						return;
@@ -32,7 +34,15 @@ public class CallableContainedFunc implements Callable {
 				}
 			}
 		}
-		scope.iPointer = scope.concepts.length;
+		Concept[] newConcepts;
+		if(scope.concepts.length > scope.iPointer+1){
+			newConcepts = Arrays.copyOfRange(scope.concepts, scope.iPointer+1, scope.concepts.length);
+		}else{
+			newConcepts = new Concept[]{};
+		}
+		VarCallable callable = new VarCallable(newConcepts);
+		callable.left_brace = "«";
+		interpreter.push(callable);
 	}
 
 	@Override

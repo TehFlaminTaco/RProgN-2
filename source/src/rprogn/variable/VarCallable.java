@@ -14,7 +14,8 @@ public class VarCallable implements Var, Callable {
 	public Callable otherDat;
 	public HashMap<String, Callable> cur_asoc;
 	
-	public boolean braced = true;
+	public String left_brace = "";
+	public String right_brace = "";
 	
 	public VarCallable(Concept[] init){
 		data = init;
@@ -34,11 +35,11 @@ public class VarCallable implements Var, Callable {
 			return otherDat.describe();
 		}
 		if(data!=null){
-			String s = braced ? (cur_asoc==null ? "{" : "«") : "";
+			String s = left_brace;
 			for (Concept c : data){
 				s += c.toString();
 			}
-			return s + (braced ? (cur_asoc==null ? "}" : "»") : "");
+			return s + right_brace;
 		}
 		return "[FUNCTION]";
 	}
