@@ -70,4 +70,14 @@ public class VarCallable implements Var, Callable {
 		return "function";
 	}
 	
+	public boolean equals(Var other){
+		if(!(other instanceof VarCallable))
+			return false;
+		VarCallable bC = (VarCallable) other;
+		
+		return (
+			(data == null && bC.data == null && otherDat==bC.otherDat) ||
+			(otherDat == null && bC.data == null && data==bC.data)
+		);
+	}
 }

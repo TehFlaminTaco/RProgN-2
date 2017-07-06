@@ -105,6 +105,7 @@ public class Functions {
 		newDefault(new CallableSplit(), "split", "û");
 		newDefault(new CallableUpper(), "upper", "U");
 		newDefault(new CallableLower(), "lower", "l");
+		newDefault(new CallableMatch(), "match", "E");
 		
 		// Misc
 		newDefault(new CallableCall(), "call","C");
@@ -113,12 +114,12 @@ public class Functions {
 		newDefault(new CallableLen(), "len", "L");
 		
 		// Constants
-		newDefault(new CallablePushSource(), "q");
-		newDefault(new CallablePushReg(), "ý");
-		newDefault(new CallablePushTime(), "t");
-		newDefault(new CallablePushTimeMS(), "™");
-		newDefault("abcdefghijklmnopqrstuvwxyz", "a");
-		newDefault("ABCDEFGHIJKLMNOPQRSTUVWXYZ", "A");
+		newDefault(new CallablePushSource(), "source", "q");
+		newDefault(new CallablePushReg(), "reg", "ý");
+		newDefault(new CallablePushTime(), "time", "t");
+		newDefault(new CallablePushTimeMS(), "time_ms", "™");
+		newDefault("abcdefghijklmnopqrstuvwxyz", "alphabet", "a");
+		newDefault("ABCDEFGHIJKLMNOPQRSTUVWXYZ", "ALPHABET", "A");
 		newDefault("x", "x");
 		newDefault("y", "y");
 		newDefault("z", "z");

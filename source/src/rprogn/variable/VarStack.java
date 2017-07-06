@@ -66,4 +66,8 @@ public class VarStack extends Stack<Var> implements Var {
 	public void push(Stack<Var> stack){
 		push((Var)new VarStack(stack));
 	}
+	
+	public boolean equals(Var other){
+		return this == other; //Reference equality. Such is life.
+	}
 }

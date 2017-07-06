@@ -33,4 +33,8 @@ public class VarString implements Var {
 		}
 		return new VarString(s);
 	}
+	
+	public boolean equals(Var other){
+		return (data.equals(((VarString) other).data));
+	}
 }

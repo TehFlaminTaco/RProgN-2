@@ -16,4 +16,8 @@ public interface Var {
 	public default String type(){
 		return "unknown";
 	}
+	
+	public default boolean equals(Var other){
+		return false;
+	}
 }

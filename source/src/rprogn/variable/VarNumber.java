@@ -53,4 +53,10 @@ public class VarNumber implements  Var {
 	public String type(){
 		return "number";
 	}
+	
+	public boolean equals(Var other){
+		if(!(other instanceof VarNumber))
+			return false;
+		return data.compareTo(((VarNumber)other).data)==0;
+	}
 }

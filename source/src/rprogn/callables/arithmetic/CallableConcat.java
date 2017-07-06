@@ -23,6 +23,8 @@ public class CallableConcat implements Callable {
 			if (a instanceof VarStack){
 				stepper = b;
 				b = a;
+			}else if (a!=null){
+				interpreter.push(a);
 			}
 			VarStack stack = (VarStack) b;
 			if (stack.size()>0){

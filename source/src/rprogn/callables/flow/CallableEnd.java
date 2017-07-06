@@ -14,7 +14,7 @@ public class CallableEnd implements Callable {
 
 	@Override
 	public String describe() {
-		return "Do nothing of interest.";
+		return "Stop the program!";
 	}
 
 }
