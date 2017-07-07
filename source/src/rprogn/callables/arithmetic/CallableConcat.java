@@ -46,7 +46,7 @@ public class CallableConcat implements Callable {
 		
 		if(a instanceof VarString || b instanceof VarString){
 			return new VarString(a.toString() + b.toString());
-		}else if(a instanceof VarCallable || b instanceof VarCallable){
+		}else if(a instanceof VarCallable && b instanceof VarCallable){
 			return new VarCallable(new CallableTacted(b.getCallable(),a.getCallable()));
 		}
 		if(a==null){return b;}
