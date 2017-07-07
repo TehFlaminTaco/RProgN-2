@@ -127,6 +127,8 @@ public class Functions {
 		newDefault("Y", "Y");
 		newDefault("Z", "Z");
 		newDefault(10, "°");
+		newDefault("", "empty", "Ø");
+		newDefault(" ", "space", "•");
 	}
 	
 	
