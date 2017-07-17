@@ -106,6 +106,8 @@ public class Functions {
 		newDefault(new CallableUpper(), "upper", "U");
 		newDefault(new CallableLower(), "lower", "l");
 		newDefault(new CallableMatch(), "match", "E");
+		newDefault(new CallableBase64Encode(), "encode64", "É");
+		newDefault(new CallableBase64Decode(), "decode64", "È");
 		
 		// Misc
 		newDefault(new CallableCall(), "call","C");
