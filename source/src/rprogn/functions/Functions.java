@@ -44,6 +44,7 @@ public class Functions {
 		newDefault(new CallableToNumber(), "n");
 		newDefault(new CallableSqrt(), "š");
 		newDefault(new CallableFactorise(), "ƒ");
+		newDefault(new CallablePrimeFactorize(), "þ");
 		newDefault(new CallableIsPrime(), "P");
 		newDefault(new CallableMin(), "m");
 		newDefault(new CallableMax(), "M");
@@ -79,6 +80,7 @@ public class Functions {
 		newDefault(new CallableFor(), "for", ";");
 		newDefault(new CallableSatisfy(), "é");
 		newDefault(new CallableHalt(), "exit", "¶");
+		newDefault(new CallableTryCatch(), "€");
 		
 		// Stacks
 		newDefault(new CallableNewStack(), "stack", "s");
@@ -91,6 +93,7 @@ public class Functions {
 		newDefault(new CallableSort(), "sort","§");
 		newDefault(new CallableRotateRight(), "›");
 		newDefault(new CallableRotateLeft(), "‹");
+		newDefault(new CallableTranspose(), "T");
 		
 		// Strings
 		newDefault(new CallableReplace(), "replace", "r");

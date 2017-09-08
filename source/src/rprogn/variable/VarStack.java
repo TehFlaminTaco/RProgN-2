@@ -27,6 +27,13 @@ public class VarStack extends Stack<Var> implements Var {
 		}
 	}
 	
+	public VarStack(VarString b) {
+		char[] chrs = b.data.toCharArray();
+		for(int i=0; i < chrs.length; i++){
+			push(""+chrs[i]);
+		}
+	}
+
 	public boolean truthy(){
 		return !isEmpty();
 	}

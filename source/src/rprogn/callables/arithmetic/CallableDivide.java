@@ -1,5 +1,7 @@
 package rprogn.callables.arithmetic;
 
+import java.math.BigDecimal;
+
 import rprogn.callables.Callable;
 import rprogn.functions.Scope;
 import rprogn.interpreter.Interpreter;
@@ -14,7 +16,7 @@ public class CallableDivide implements Callable {
 		Var b = interpreter.pop();
 		
 		if(a instanceof VarNumber && b instanceof VarNumber){
-			interpreter.push(((VarNumber)b).data.divide(((VarNumber)a).data));
+			interpreter.push(((VarNumber)b).data.divide(((VarNumber)a).data, 32, BigDecimal.ROUND_HALF_UP));
 		}
 		
 	}

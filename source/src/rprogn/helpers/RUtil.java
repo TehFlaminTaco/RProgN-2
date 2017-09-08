@@ -31,7 +31,7 @@ public class RUtil {
 	}
 	
 	public static BigDecimal pow(BigDecimal from, BigDecimal to){
-		to=to.setScale(Math.max(to.scale(), from.scale())+10);
+		to=to.setScale(Math.max(to.scale(), from.scale())+100);
 		BigDecimal out = BigDecimalMath.pow(from.setScale(to.scale()), to);
 		return out.setScale(out.scale()-1, BigDecimal.ROUND_HALF_UP);
 	}

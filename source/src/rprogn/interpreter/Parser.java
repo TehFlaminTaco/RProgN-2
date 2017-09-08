@@ -1,6 +1,5 @@
 package rprogn.interpreter;
 
-import rprogn.Flags;
 import rprogn.callables.Callable;
 import rprogn.compiler.concept.Concept;
 import rprogn.compiler.concept.ConceptFunction;
@@ -25,13 +24,7 @@ public class Parser {
 				Callable func = scope.functions.get(((ConceptFunction) concept).func);
 				
 				if(func!=null){
-					try{
-						func.Call(interpreter,scope);
-					}catch(Exception e){
-						System.err.println("ERROR AT WORD "+(scope.iPointer+1)+" \""+concepts[scope.iPointer].toString()+"\"\n"+e.toString());
-						if(Flags.FlagToggled("e"))
-							e.printStackTrace();
-					}
+					func.Call(interpreter,scope);
 				}
 			}else if(concept instanceof ConceptString){
 				interpreter.push(((ConceptString)concept).string);

@@ -11,6 +11,11 @@ import rprogn.variable.VarNumber;
 public class RProgN {
 	static Interpreter interpreter;
 	
+	
+	public static String escape(String inp){
+		return inp.replace("\n", "\\n");
+	}
+	
 	public static void main(String[] args) {
 		Functions.setDefaults();
 		
@@ -35,6 +40,9 @@ public class RProgN {
 		
 		if(Flags.FlagToggled("b")){
 			System.err.println(ByteTable.GetUsedBytes());
+			for(String s : Functions.default_functions.keySet()){
+				System.err.println(escape(s));
+			}
 		}
 		
 		if(target==null){

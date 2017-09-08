@@ -37,4 +37,13 @@ public class VarString implements Var {
 	public boolean equals(Var other){
 		return (data.equals(((VarString) other).data));
 	}
+	
+	public VarStack splitLines(){
+		String[] spl = data.split("\r?\n");
+		VarStack nStack = new VarStack();
+		for (int i=0; i < spl.length; i++){
+			nStack.push(spl[i]);
+		}
+		return nStack;
+	}
 }

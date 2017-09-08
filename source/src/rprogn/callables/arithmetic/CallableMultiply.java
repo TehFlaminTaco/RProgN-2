@@ -18,13 +18,26 @@ public class CallableMultiply implements Callable {
 		Var a = interpreter.pop();
 		Var b = interpreter.pop();
 		
+		if(a instanceof VarNumber && b instanceof VarStack){
+			VarNumber aN = (VarNumber)a;
+			VarStack bS = (VarStack)b;
+			VarStack nS = new VarStack();
+			int initSize = bS.size();
+			for (BigDecimal i=BigDecimal.ZERO; i.compareTo(aN.data)<0; i=i.add(BigDecimal.ONE)){
+				for(int c=0; c < initSize; c++){
+					nS.push(bS.get(c));
+				}
+			}
+			interpreter.push(nS);
+			return;
+		}
 		
 		if(a instanceof VarStack){
 			if(b!=null){
 				interpreter.push(b);
 			}
 			VarStack stack = (VarStack)a;
-			Var t = null;
+			Var t = new VarNumber(1);
 			for (int i=0; i<stack.size(); i++){
 				if(t==null){
 					t=stack.get(i);

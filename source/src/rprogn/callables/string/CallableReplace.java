@@ -79,7 +79,7 @@ public class CallableReplace implements Callable {
 			if(key instanceof VarStack){
 				VarStack newStack = new VarStack();
 				for (int i=0; i<((VarStack)key).size(); i++){
-					newStack.push(key);
+					newStack.push(rplmt);
 				}
 				interpreter.push(newStack);
 			}else{
