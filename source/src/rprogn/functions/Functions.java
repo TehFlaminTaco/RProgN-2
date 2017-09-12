@@ -62,6 +62,7 @@ public class Functions {
 		// Bitwise Functions
 		newDefault(new CallableBitwiseOr(), "or", "|");
 		newDefault(new CallableBitwiseAnd(), "and", "&");
+		newDefault(new CallableBitwiseNot(), "not", "!");
 		
 		// Reg Manipulation
 		newDefault(new CallableDuplicate(), "]");
@@ -81,6 +82,8 @@ public class Functions {
 		newDefault(new CallableSatisfy(), "é");
 		newDefault(new CallableHalt(), "exit", "¶");
 		newDefault(new CallableTryCatch(), "€");
+		newDefault(new CallableReduce(), "reduce", "à");
+		newDefault(new CallableFold(), "fold", "á");
 		
 		// Stacks
 		newDefault(new CallableNewStack(), "stack", "s");
@@ -94,6 +97,7 @@ public class Functions {
 		newDefault(new CallableRotateRight(), "›");
 		newDefault(new CallableRotateLeft(), "‹");
 		newDefault(new CallableTranspose(), "T");
+		newDefault(new CallableFlatten(), "f");
 		
 		// Strings
 		newDefault(new CallableReplace(), "replace", "r");
@@ -111,6 +115,7 @@ public class Functions {
 		newDefault(new CallableMatch(), "match", "E");
 		newDefault(new CallableBase64Encode(), "encode64", "É");
 		newDefault(new CallableBase64Decode(), "decode64", "È");
+		newDefault(new CallablePadLeft(), "ò");
 		
 		// Misc
 		newDefault(new CallableCall(), "call","C");
